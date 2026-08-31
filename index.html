@@ -48,7 +48,15 @@
       text-transform: uppercase;
       letter-spacing: 0.08em;
     }
+.subtitle a {
+  color: inherit;
+  text-decoration: none;
+  margin-right: 35px;
+}
 
+.subtitle a:hover {
+  text-decoration: underline;
+}
     .brief {
       max-width: 850px;
     }
@@ -122,10 +130,14 @@
 
     <header>
       <h1 class="title">Ficciones<br>Futuras</h1>
-      <div class="subtitle">Brief</div>
+    <div class="subtitle">
+  <a href="#brief">Brief</a>
+  <a href="#equipo">Docentes</a>
+</div>
+      
     </header>
 
-    <section class="brief">
+  <section class="brief" id="brief">
 
       <p>
         Ficciones Futuras es una materia que se planta en el presente,
@@ -203,7 +215,7 @@
 
     </section>
 
-    <section class="team">
+<section class="team" id="equipo">
 
       <div class="team-title">Equipo Docente</div>
 
@@ -221,7 +233,7 @@
     </section>
 
     <footer>
-      Ficciones Futuras · FADU · UBA
+      Ficciones Futuras · FADU · UBA · 2026
     </footer>
 
   </main>
