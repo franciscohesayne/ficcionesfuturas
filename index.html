@@ -54,6 +54,14 @@
       text-transform: uppercase;
       letter-spacing: 0.08em;
     }
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #39c6f3;
+  padding: 20px 0;
+}
     
 .subtitle a {
   color: inherit;
@@ -151,15 +159,28 @@
 
     <header id="inicio">
     <h1 class="title">Ficciones <span>Futuras</span></h1>
-    <div class="subtitle">
+<nav class="nav">
+
   <a href="#brief">Brief</a>
   <a href="#equipo">Docentes</a>
-  <a href="consigna.html">Consigna</a>
+  <a href="#" id="consigna-toggle">Consigna</a>
   <a href="#contacto">Contacto</a>
-  <a href="2021.html">2021</a>
   <a href="#archivo">Archivo</a>
-  <a href="#Expansión">Expansión</a>   
-</div>
+  <a href="#expansion">Expansión</a>
+
+  <div class="consigna-menu" id="consigna-menu">
+
+    <a href="#metodologia">Metodología</a>
+    <a href="#objetivos">Objetivos</a>
+    <a href="#herramientas">Herramientas</a>
+    <a href="#formato">Formato</a>
+    <a href="#agentes">Agentes</a>
+    <a href="#referentes">Referentes</a>
+    <a href="#bibliografia">Bibliografía</a>
+
+  </div>
+
+</nav>
       
     </header>
 
@@ -273,7 +294,17 @@
     </footer>
 
   </main>
+  
+<script>
+    const botonConsigna = document.getElementById("consigna-toggle");
+    const menuConsigna = document.getElementById("consigna-menu");
 
+    botonConsigna.addEventListener("click", function(event) {
+      event.preventDefault();
+      menuConsigna.classList.toggle("visible");
+    });
+  </script>
+  
 </body>
 </html>
 ```
