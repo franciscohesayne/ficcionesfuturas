@@ -65,16 +65,24 @@ header {
       display: inline;
     }
 
-
-    /* NAV PRINCIPAL */
+/* NAV PRINCIPAL */
 
     .nav {
       position: sticky;
       top: 0;
       z-index: 10;
       background: #39c6f3;
-      padding: 20px 0;
-  margin-bottom: 85px;
+      
+      /* Reducimos el padding superior (de 20px a 0px o 5px) para acercarlo al título */
+      padding: 5px 0 20px; 
+      margin-bottom: 85px;
+
+      /* Transformamos el texto a mayúsculas */
+      text-transform: uppercase;
+      
+      /* Opcional: ajustamos un poco el tamaño y espaciado para que se vea idéntico a la captura */
+      font-size: 14px; 
+      letter-spacing: 0.05em; 
     }
 
 
