@@ -46,9 +46,10 @@
 
     /* TÍTULO */
 
-header {
-  margin-bottom: 0;
-}
+    header {
+      /* 35px para igualar la distancia de consigna.html */
+      margin-bottom: 35px; 
+    }
 
     .title {
       font-size: clamp(48px, 9vw, 120px);
@@ -65,7 +66,7 @@ header {
       display: inline;
     }
 
-/* NAV PRINCIPAL */
+    /* NAV PRINCIPAL */
 
     .nav {
       position: sticky;
@@ -73,18 +74,17 @@ header {
       z-index: 10;
       background: #39c6f3;
       
-      /* Reducimos el padding superior (de 20px a 0px o 5px) para acercarlo al título */
-      padding: 5px 0 20px; 
-      margin-bottom: 85px;
-
-      /* Transformamos el texto a mayúsculas */
-      text-transform: uppercase;
+      /* Sin padding superior para respetar los 35px del header */
+      padding: 0 0 20px 0; 
       
-      /* Opcional: ajustamos un poco el tamaño y espaciado para que se vea idéntico a la captura */
-      font-size: 14px; 
-      letter-spacing: 0.05em; 
-    }
+      /* 150px hacia el texto, igual a consigna.html */
+      margin-bottom: 150px;
 
+      /* Mismos estilos que .subtitle en consigna.html */
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
 
     /* ENLACES DEL NAV */
 
@@ -94,7 +94,6 @@ header {
       text-decoration: none;
       margin-right: 35px;
     }
-
 
     /* NEGRITA AL PASAR EL CURSOR
        sin modificar el ancho de las palabras */
@@ -107,14 +106,12 @@ header {
         -0.5px 0 0 currentColor;
     }
 
-
     /* CONSIGNA */
 
     .consigna-item {
       position: relative;
       display: inline-block;
     }
-
 
     /* SUBMENÚ DE CONSIGNA */
 
@@ -130,13 +127,11 @@ header {
       white-space: nowrap;
     }
 
-
     /* EL MENÚ APARECE AL PASAR EL CURSOR */
 
     .consigna-item:hover .consigna-menu {
       display: block;
     }
-
 
     /* ENLACES DEL SUBMENÚ */
 
@@ -150,7 +145,6 @@ header {
 
       font-size: 14px;
     }
-
 
     /* BRIEF */
 
@@ -168,7 +162,6 @@ header {
       letter-spacing: -0.035em;
       margin-bottom: 75px;
     }
-
 
     /* EQUIPO DOCENTE */
 
@@ -199,7 +192,6 @@ header {
       margin-top: 70px;
     }
 
-
     /* CONSIGNA */
 
     .consigna {
@@ -209,7 +201,6 @@ header {
       max-width: 850px;
     }
 
-
     /* PIE */
 
     footer {
@@ -218,7 +209,6 @@ header {
       text-transform: uppercase;
       letter-spacing: 0.06em;
     }
-
 
     /* VERSIÓN CELULAR */
 
@@ -234,6 +224,12 @@ header {
       }
 
       header {
+        /* Mantenemos los 35px del título al nav en celular */
+        margin-bottom: 35px; 
+      }
+
+      .nav {
+        /* Distancia de 100px al texto en celular (como en consigna.html) */
         margin-bottom: 100px;
       }
 
@@ -262,11 +258,9 @@ header {
   </style>
 </head>
 
-
 <body>
 
   <main>
-
 
     <!-- TÍTULO -->
 
@@ -278,7 +272,6 @@ header {
 
     </header>
 
-
     <!-- NAVEGACIÓN -->
 
     <nav class="nav">
@@ -286,7 +279,6 @@ header {
       <a href="#brief">Brief</a>
 
       <a href="#equipo">Docentes</a>
-
 
       <!-- CONSIGNA CON SUBMENÚ -->
 
@@ -310,7 +302,6 @@ header {
 
       </div>
 
-
       <a href="#contacto">Contacto</a>
 
       <a href="#archivo">Archivo</a>
@@ -318,7 +309,6 @@ header {
       <a href="#expansion">Expansión</a>
 
     </nav>
-
 
     <!-- BRIEF -->
 
@@ -400,7 +390,6 @@ header {
 
     </section>
 
-
     <!-- EQUIPO DOCENTE -->
 
     <section class="team" id="equipo">
@@ -423,7 +412,6 @@ header {
       <p>Constanza Tkaczyk — Estudiante DG</p>
       <p>Santiago Ramírez Tricoli — Estudiante DIyS</p>
 
-
       <div class="team-subtitle external-title">
         Equipo Global
       </div>
@@ -436,7 +424,6 @@ header {
       <p>Arq. Camila Mijoevich</p>
 
     </section>
-
 
     <!-- CONSIGNA -->
 
@@ -519,12 +506,11 @@ header {
 
     </section>
 
-
     <!-- PIE -->
 
     <footer>
 
-      · 2026 · Segundo Semestre · Ficciones Futuras · FADU · UBA · Buenos Aires · Argentina ·
+      · 2026 · Segundo Semestre · Ficciones Futuras · Materia optativa · FADU · UBA · Buenos Aires · Argentina ·
 
     </footer>
 
