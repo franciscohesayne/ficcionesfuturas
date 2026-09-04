@@ -89,7 +89,8 @@
     /* ENLACES DEL NAV */
 
     .nav > a,
-    .consigna-trigger {
+    .consigna-trigger,
+    .expansion-trigger {
       color: inherit;
       text-decoration: none;
       margin-right: 35px;
@@ -100,22 +101,27 @@
 
     .nav > a:hover,
     .consigna-trigger:hover,
-    .consigna-menu a:hover {
+    .consigna-menu a:hover,
+    .expansion-trigger:hover,
+    .expansion-menu a:hover {
       text-shadow:
         0.5px 0 0 currentColor,
         -0.5px 0 0 currentColor;
     }
 
-    /* CONSIGNA */
+    /* CONSIGNA / EXPANSIÓN (MENÚS DESPLEGABLES) */
 
-    .consigna-item {
+    .consigna-item,
+    .expansion-item {
       position: relative;
       display: inline-block;
+      margin-right: 35px;
     }
 
-    /* SUBMENÚ DE CONSIGNA */
+    /* SUBMENÚS */
 
-    .consigna-menu {
+    .consigna-menu,
+    .expansion-menu {
       display: none;
 
       position: absolute;
@@ -129,13 +135,15 @@
 
     /* EL MENÚ APARECE AL PASAR EL CURSOR */
 
-    .consigna-item:hover .consigna-menu {
+    .consigna-item:hover .consigna-menu,
+    .expansion-item:hover .expansion-menu {
       display: block;
     }
 
-    /* ENLACES DEL SUBMENÚ */
+    /* ENLACES DE LOS SUBMENÚS */
 
-    .consigna-menu a {
+    .consigna-menu a,
+    .expansion-menu a {
       display: block;
 
       color: inherit;
@@ -230,6 +238,14 @@
 
     .contacto-section a:hover {
       text-decoration: underline;
+    }
+
+    .contacto-links {
+      margin-top: 15px;
+    }
+
+    .contacto-links p {
+      margin: 0 0 10px 0;
     }
 
     /* PIE */
@@ -341,7 +357,21 @@
 
       <a href="#archivo">Archivo</a>
 
-      <a href="#expansion">Expansión</a>
+      <!-- EXPANSIÓN CON SUBMENÚ -->
+
+      <div class="expansion-item">
+
+        <a href="#" class="expansion-trigger">
+          Expansión
+        </a>
+
+        <div class="expansion-menu">
+
+          <a href="https://ficcionesfuturas.com.ar/CRITICA.html">Posgrado</a>
+
+        </div>
+
+      </div>
 
     </nav>
 
@@ -465,8 +495,8 @@
     <section class="consigna" id="consigna">
 
       <!-- ENCABEZADO DE CONSIGNA -->
-      <p style="font-size: 24px; font-weight: bold; margin-bottom: 5px;">
-        Consigna 2026 - 2do SEMESTRE
+      <p style="font-size: 24px; font-weight: bold; margin-bottom: 5px; text-transform: uppercase;">
+        CONSIGNA 2026 - 2DO SEMESTRE
       </p>
       <p style="margin-top: 0; margin-bottom: 70px;">
         Ficciones Domésticas - La nueva generación / el semillero
@@ -709,6 +739,12 @@
       <p>
         <a href="mailto:ficcionesfuturas@gmail.com">ficcionesfuturas@gmail.com</a>
       </p>
+
+      <div class="contacto-links">
+        <p><a href="https://www.youtube.com/@FiccionesFuturas" target="_blank">YouTube: @FiccionesFuturas</a></p>
+        <p><a href="https://www.instagram.com/ficcionesfuturas/" target="_blank">Instagram: @ficcionesfuturas</a></p>
+        <p><a href="https://www.instagram.com/acdc.fadu/" target="_blank">Instagram: @acdc.fadu</a></p>
+      </div>
       
     </section>
 
@@ -716,7 +752,7 @@
 
     <footer>
 
-      · 2026 · Segundo Semestre · Ficciones Futuras · Materia optativa · FADU · UBA · Ciudad universitaria · Buenos Aires · Argentina ·
+      · 2026 · Segundo Semestre · Ficciones Futuras · Materia optativa · FADU · UBA · Ciudad Universitaria · Buenos Aires · Argentina ·
 
     </footer>
 
