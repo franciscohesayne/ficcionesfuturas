@@ -1,26 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
 <!-- Significa que el ideoma es español -->
-  
+
+<!-- CABEZA -->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Ficciones Futuras</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
 
-    html {
-      scroll-behavior: smooth;
-    }
-    /* baja suave */
 
-    body {
+<!-- ESTILO -->
+<style>
+
+/* CSS */
+  
+* {box-sizing: border-box;}
+
+/* baja suave */
+html {scroll-behavior: smooth;}
+
+/* CUERPO */
+body {
       margin: 0;
-      background: #39c6f3;
+
+  /* Color del fondo */
+  background: #39c6f3;
       color: #fff;
       font-family: Arial, Helvetica, sans-serif;
       font-size: 18px;
@@ -81,9 +87,8 @@ letter-spacing: 0.08em;
 }
     
 /* SUBMENÚ CONSIGNA */
-.consigna-menu {
-  display: none;
-}
+.consigna-menu {display: none;}
+.consigna-menu.visible {display: block;}
     
 .subtitle a {
   color: inherit;
