@@ -2,231 +2,261 @@
 <html lang="es">
 <!-- Significa que el idioma es español -->
 
-<!-- CABEZA --> 
+<!-- CABEZA -->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Ficciones Futuras</title>
 
+  <!-- ESTILO -->
+  <style>
 
-<!-- ESTILO -->
-<style>
+    /* CSS */
 
-  /* CSS */
+    * {
+      box-sizing: border-box;
+    }
 
-  * {
-    box-sizing: border-box;
-  }
+    /* Baja suave */
+    html {
+      scroll-behavior: smooth;
+    }
 
-  /* baja suave */
-  html {
-    scroll-behavior: smooth;
-  }
-
-  /* CUERPO */
-  body {
-    margin: 0;
-
-    /* Color del fondo */
-    background: #39c6f3;
-    color: #fff;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 18px;
-    line-height: 1.45;
-  }
-
-  main {
-    width: min(1100px, calc(100% - 80px));
-    margin: 0 auto;
-    padding: 70px 0 120px;
-  }
-
-  header {
-    margin-bottom: 100px;
-  }
-
-  .title {
-    font-size: clamp(48px, 9vw, 120px);
-    line-height: 0.9;
-    font-weight: 700;
-    letter-spacing: -0.065em;
-    margin: 0;
-    text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
-  }
-  
-  .title span {
-    display: inline;
-  }
-
-
-  /* NAV PRINCIPAL */
-
-  .nav {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background: #39c6f3;
-    padding: 20px 0;
-    font-size: 16px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-
-
-  /* ENLACES DEL NAV */
-
-  .nav > a,
-  .consigna-trigger {
-    color: inherit;
-    text-decoration: none;
-    margin-right: 35px;
-  }
-
-  .nav > a:hover,
-.consigna-trigger:hover,
-.consigna-menu a:hover {
-  text-shadow:
-    0.5px 0 0 currentColor,
-    -0.5px 0 0 currentColor;
-}
-
-
-  /* CONTENEDOR DE CONSIGNA */
-
-  .consigna-item {
-    position: relative;
-    display: inline-block;
-  }
-
-
-  /* MENÚ DESPLEGABLE CONSIGNA */
-
-  .consigna-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    padding-top: 20px;
-    white-space: nowrap;
-  }
-
-
-  /* MOSTRAR MENÚ AL PASAR EL CURSOR */
-
-  .consigna-item:hover .consigna-menu {
-    display: block;
-  }
-
-
-  /* ENLACES DEL SUBMENÚ */
-
-  .consigna-menu a {
-    display: block;
-    color: inherit;
-    text-decoration: none;
-    margin-bottom: 12px;
-    font-size: 14px;
-  }
-
-  .consigna-menu a:hover {
-    font-weight: 700;
-  }
-
-
-  /* BRIEF */
-
-  .brief {
-    max-width: 850px;
-  }
-
-  .brief p {
-    margin: 0 0 28px;
-  }
-
-  .brief p:first-child {
-    font-size: clamp(27px, 3.4vw, 46px);
-    line-height: 1.08;
-    letter-spacing: -0.035em;
-    margin-bottom: 75px;
-  }
-
-
-  /* EQUIPO DOCENTE */
-
-  .team {
-    margin-top: 150px;
-    max-width: 500px;
-  }
-
-  .team-title {
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 30px;
-  }
-
-  .team p {
-    margin: 0 0 8px;
-  }
-
-  .team-subtitle {
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin: 45px 0 30px;
-  }
-
-  .external-title {
-    margin-top: 70px;
-  }
-
-
-  /* PIE */
-
-  footer {
-    margin-top: 180px;
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-
-
-  /* VERSIÓN MÓVIL */
-
-  @media (max-width: 700px) {
-
+    /* CUERPO */
     body {
-      font-size: 16px;
+      margin: 0;
+
+      /* Color del fondo */
+      background: #39c6f3;
+
+      /* Color de la letra */
+      color: #fff;
+
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 18px;
+      line-height: 1.45;
     }
 
     main {
-      width: calc(100% - 40px);
-      padding-top: 35px;
+      width: min(1100px, calc(100% - 80px));
+      margin: 0 auto;
+      padding: 70px 0 120px;
     }
-      
+
+    /* TÍTULO */
+
     header {
       margin-bottom: 100px;
     }
 
+    .title {
+      font-size: clamp(48px, 9vw, 120px);
+      line-height: 0.9;
+      font-weight: 700;
+      letter-spacing: -0.065em;
+      margin: 0;
+
+      /* Sombra del título */
+      text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+    }
+
     .title span {
+      display: inline;
+    }
+
+
+    /* NAV PRINCIPAL */
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+
+      background: #39c6f3;
+
+      padding: 20px 0;
+
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+
+    /* ENLACES DEL NAV */
+
+    .nav > a,
+    .consigna-trigger {
+      color: inherit;
+      text-decoration: none;
+      margin-right: 35px;
+    }
+
+
+    /* NEGRITA AL PASAR EL CURSOR
+       sin modificar el ancho de las palabras */
+
+    .nav > a:hover,
+    .consigna-trigger:hover,
+    .consigna-menu a:hover {
+      text-shadow:
+        0.5px 0 0 currentColor,
+        -0.5px 0 0 currentColor;
+    }
+
+
+    /* CONSIGNA */
+
+    .consigna-item {
+      position: relative;
+      display: inline-block;
+    }
+
+
+    /* SUBMENÚ DE CONSIGNA */
+
+    .consigna-menu {
+      display: none;
+
+      position: absolute;
+      top: 100%;
+      left: 0;
+
+      padding-top: 20px;
+
+      white-space: nowrap;
+    }
+
+
+    /* EL MENÚ APARECE AL PASAR EL CURSOR */
+
+    .consigna-item:hover .consigna-menu {
       display: block;
     }
 
-    .brief p:first-child {
-      margin-bottom: 55px;
+
+    /* ENLACES DEL SUBMENÚ */
+
+    .consigna-menu a {
+      display: block;
+
+      color: inherit;
+      text-decoration: none;
+
+      margin-bottom: 12px;
+
+      font-size: 14px;
     }
+
+
+    /* BRIEF */
+
+    .brief {
+      max-width: 850px;
+    }
+
+    .brief p {
+      margin: 0 0 28px;
+    }
+
+    .brief p:first-child {
+      font-size: clamp(27px, 3.4vw, 46px);
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+      margin-bottom: 75px;
+    }
+
+
+    /* EQUIPO DOCENTE */
 
     .team {
-      margin-top: 100px;
+      margin-top: 150px;
+      max-width: 500px;
     }
+
+    .team-title {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 30px;
+    }
+
+    .team p {
+      margin: 0 0 8px;
+    }
+
+    .team-subtitle {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin: 45px 0 30px;
+    }
+
+    .external-title {
+      margin-top: 70px;
+    }
+
+
+    /* CONSIGNA */
+
+    .consigna {
+      margin-top: 150px;
+
+      /* Misma medida que el Brief */
+      max-width: 850px;
+    }
+
+
+    /* PIE */
 
     footer {
-      margin-top: 120px;
+      margin-top: 180px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
     }
-  }
 
-</style>
+
+    /* VERSIÓN CELULAR */
+
+    @media (max-width: 700px) {
+
+      body {
+        font-size: 16px;
+      }
+
+      main {
+        width: calc(100% - 40px);
+        padding-top: 35px;
+      }
+
+      header {
+        margin-bottom: 100px;
+      }
+
+      .title span {
+        display: block;
+      }
+
+      .brief p:first-child {
+        margin-bottom: 55px;
+      }
+
+      .team {
+        margin-top: 100px;
+      }
+
+      .consigna {
+        margin-top: 100px;
+      }
+
+      footer {
+        margin-top: 120px;
+      }
+
+    }
+
+  </style>
 </head>
 
 
@@ -234,14 +264,19 @@
 
   <main>
 
+
+    <!-- TÍTULO -->
+
     <header id="inicio">
 
-      <h1 class="title">Ficciones <span>Futuras</span></h1>
+      <h1 class="title">
+        Ficciones <span>Futuras</span>
+      </h1>
 
     </header>
 
 
-    <!-- NAV PRINCIPAL -->
+    <!-- NAVEGACIÓN -->
 
     <nav class="nav">
 
@@ -249,9 +284,14 @@
 
       <a href="#equipo">Docentes</a>
 
+
+      <!-- CONSIGNA CON SUBMENÚ -->
+
       <div class="consigna-item">
 
-        <a href="#" class="consigna-trigger">Consigna</a>
+        <a href="#" class="consigna-trigger">
+          Consigna
+        </a>
 
         <div class="consigna-menu">
 
@@ -266,6 +306,7 @@
         </div>
 
       </div>
+
 
       <a href="#contacto">Contacto</a>
 
@@ -284,7 +325,7 @@
         Ficciones Futuras es una materia que se planta en el presente,
         precisamente en la arquitectura y el diseño contemporáneo.
       </p>
-    
+
       <p>
         Actualmente vivimos en un mundo que está muy influenciado por la
         tecnología y sus dispositivos. Lo digital nos ha tomado por completo,
@@ -361,10 +402,14 @@
 
     <section class="team" id="equipo">
 
-      <div class="team-title">Docentes</div>
+      <div class="team-title">
+        Docentes
+      </div>
 
-      <div class="team-subtitle">Equipo FADU-UBA</div>
-  
+      <div class="team-subtitle">
+        Equipo FADU-UBA
+      </div>
+
       <p>Arq. Francisco Hesayne</p>
       <p>Arq. Santiago Albarracín</p>
       <p>Arq. Augusto Volpe</p>
@@ -375,104 +420,98 @@
       <p>Constanza Tkaczyk — Estudiante DG</p>
       <p>Santiago Ramírez Tricoli — Estudiante DIyS</p>
 
-      <div class="team-subtitle external-title">Equipo Global</div>
-  
+
+      <div class="team-subtitle external-title">
+        Equipo Global
+      </div>
+
       <p>Arq. Agustina Giambelluca — Bahía Blanca</p>
       <p>Arq. Agustín Poch — Australia</p>
       <p>Arq. Mariano Valle — España</p>
       <p>Arq. Jennifer Kazár — España</p>
       <p>Arq. Luciano Enriquez</p>
       <p>Arq. Camila Mijoevich</p>
-  
+
     </section>
 
 
     <!-- CONSIGNA -->
 
-    <section class="Consigna" id="Consigna">
+    <section class="consigna" id="consigna">
 
-      <div class="team-title">Metodología de Trabajo</div>
+      <div class="team-title">
+        Metodología de Trabajo
+      </div>
 
       <p>
-        Este cuatrimestre vamos a trabajar sobre casas contemporáneas, 
-        que se han construido hace no menos de 10 años y por arquitectos jóvenes. 
-        Esto presenta una buena excusa para reflexionar sobre las condiciones 
+        Este cuatrimestre vamos a trabajar sobre casas contemporáneas,
+        que se han construido hace no menos de 10 años y por arquitectos jóvenes.
+        Esto presenta una buena excusa para reflexionar sobre las condiciones
         del habitar contemporáneo y como proyectarlo hacia el futuro.
       </p>
 
       <p>
-        Estas casas presentan una escala reducida, como consecuencia de 
-        esto el foco está puesto en la domesticidad, la relación de sus espacios, 
-        el contexto cultural y tecnológico, además de considerar como las mismas se 
-        trasladan hacia el futuro. Esta visión hacia el interior no anula su 
-        condición de unidad dentro de la manzana, el barrio, o la ciudad. 
-        Estas visiones corren en paralelo y se espera que se entrelacen 
+        Estas casas presentan una escala reducida, como consecuencia de
+        esto el foco está puesto en la domesticidad, la relación de sus espacios,
+        el contexto cultural y tecnológico, además de considerar como las mismas se
+        trasladan hacia el futuro. Esta visión hacia el interior no anula su
+        condición de unidad dentro de la manzana, el barrio, o la ciudad.
+        Estas visiones corren en paralelo y se espera que se entrelacen
         a lo largo de la cursada.
       </p>
 
-      <p>    
-        Estos casos de estudios no son objetos aislados, se encuentran dentro de entornos urbanos,
-        por lo cual se pretende que se mezclen, contaminen, contagien, aglutinen, parasiten,
-        fagociten dentro de un entorno de similares características. El ejercicio apunta a explotar al
-        máximo las posibilidades que brindan cada una de estas viviendas. Por lo cual, la
-        implantación de cada una de las propuestas finales es inevitablemente urbana.
+      <p>
+        Estos casos de estudios no son objetos aislados, se encuentran dentro
+        de entornos urbanos, por lo cual se pretende que se mezclen, contaminen,
+        contagien, aglutinen, parasiten, fagociten dentro de un entorno de similares
+        características. El ejercicio apunta a explotar al máximo las posibilidades
+        que brindan cada una de estas viviendas. Por lo cual, la implantación de
+        cada una de las propuestas finales es inevitablemente urbana.
       </p>
 
-      <p>  
-        La escala más reducida de las casas nos permite también poder trabajarlo con una mayor
-        precisión y enfoque. La relación con el usuario es mucho más cercana y aprehensible, lo cual
-        se va a manifestar en gráficos, diagramas, videos, y representaciones más rigurosas. De esta
-        manera se pretende abordar el espacio doméstico desde diferentes perspectivas y con ese
-        material generado enriquecer la investigación.
+      <p>
+        La escala más reducida de las casas nos permite también poder trabajarlo
+        con una mayor precisión y enfoque. La relación con el usuario es mucho más
+        cercana y aprehensible, lo cual se va a manifestar en gráficos, diagramas,
+        videos, y representaciones más rigurosas. De esta manera se pretende abordar
+        el espacio doméstico desde diferentes perspectivas y con ese material generado
+        enriquecer la investigación.
       </p>
 
-      <p>  
-        El secreto de la cursada está puesto en los casos de estudios, en su análisis y en una
-        investigación lo más profunda posible. Por ende, poder elaborar una abundante masa crítica
-        sobre el objeto de estudio es vital, ya que esta información nos permitirá llevar adelante
-        modificaciones del caso elegido, pero con un criterio avalado. Cuanta mayor sea esta base
-        de dato, mejor nos permitirá abarcar desde varios puntos de vista el objeto y nos facilitará
-        su entendimiento. Por masa crítica entendemos todos aquellos datos que están vinculados al
-        caso de estudio, como puede ser los arquitectos que intervinieron; su trayectoria; el lugar de
-        emplazamiento del objeto; en qué condiciones fue construido, si fue un concurso, un proyecto
-        privado, o iniciativa del gobierno de turno. Llevar adelante análisis diacrónicos y sincrónicos
-        es indispensables para este trabajo.
-      </p> 
+      <p>
+        El secreto de la cursada está puesto en los casos de estudios, en su análisis
+        y en una investigación lo más profunda posible. Por ende, poder elaborar una
+        abundante masa crítica sobre el objeto de estudio es vital, ya que esta
+        información nos permitirá llevar adelante modificaciones del caso elegido,
+        pero con un criterio avalado.
+      </p>
 
-      <p>  
-        El trabajo está pensado en tres instancias, que a lo largo del trabajo se van a ir solapando para así al final
-        formar una sola propuesta. Estas instancias son tres: elegir una casa de la lista que se les va a asignar; en
-        segundo lugar, trabajar sobre uno de los agentes disruptores, y en tercera instancia elegir un entorno urbano –
-        ciudad – de cualquier parte del mundo. Cada instancia tendrá su momento de investigación y elaboración del
-        material.
-      </p> 
+      <p>
+        El trabajo está pensado en tres instancias, que a lo largo del trabajo se van
+        a ir solapando para así al final formar una sola propuesta. Estas instancias
+        son tres: elegir una casa de la lista que se les va a asignar; en segundo lugar,
+        trabajar sobre uno de los agentes disruptores, y en tercera instancia elegir un
+        entorno urbano – ciudad – de cualquier parte del mundo.
+      </p>
 
-      <p> 
-        La primera instancia es elegir una de las casas de la lista y analizarlas teniendo en cuenta que este será el
-        escenario donde se realizará la ficción, por lo cual se aconseja evitar los lugares comunes y desarrollar un
-        pensamiento lateral y pensar por afuera de la caja. Esta parte se podría describir como una etapa más bien
-        casi introspectiva, que pretende estudiar y reconocer el objeto de estudio, a través delredibujo
-        y presentaciones de plantas, cortes, y axonométricas, videos, collages, piezas gráficas.
-        La razón de estos dibujos es la de aprehender el caso de estudio de una manera diferente de
-        la que lo haríamos con las imágenes que podríamos conseguir fácilmente a través diversos
-        canales como libros, páginas webs, pdf, etc. Este modelo nos facilitará el trabajo para aplicarle
-        modificaciones y poder plantear nuestra ficción, en esta instancia estamos construyendo el
-        entorno, escenario, ambiente donde se va a llevar a cabo la versión final de la ficción. Es por
-        esta razón que es muy importante esta instancia.
-      </p> 
-  
-      <p>     
-        La segunda instancia es la llamada de los agentes disruptores, los cuales son una serie de categorías que su
-        función será la de brindarle un nuevo sentido, visión, realidad, entorno, atmósfera a la casa de estudio. Para esto
-        tendrán una serie de videos guías., que les servirán para guiar su propia investigación.
-      </p> 
+      <p>
+        La primera instancia es elegir una de las casas de la lista y analizarlas
+        teniendo en cuenta que este será el escenario donde se realizará la ficción,
+        por lo cual se aconseja evitar los lugares comunes y desarrollar un pensamiento
+        lateral y pensar por afuera de la caja.
+      </p>
 
-      <p> 
-        En la última instancia se incorpora la ciudad, que en este año vamos a trabajar en cualquier
-        entorno urbano del planeta, ya que las casas son de Buenos Aires este año. Por lo cual damos
-        comienzo a una etapa más especulativa, donde la ficción dice presente. A partir de aquí ya
-        podemos empezar a darle forma y sentido a la ficción, es donde todo se vuelve especulativo
-        y se empieza a contaminar por la cultura popular y los gustos personales.
+      <p>
+        La segunda instancia es la llamada de los agentes disruptores, los cuales son
+        una serie de categorías que su función será la de brindarle un nuevo sentido,
+        visión, realidad, entorno, atmósfera a la casa de estudio.
+      </p>
+
+      <p>
+        En la última instancia se incorpora la ciudad, que en este año vamos a trabajar
+        en cualquier entorno urbano del planeta, ya que las casas son de Buenos Aires
+        este año. Por lo cual damos comienzo a una etapa más especulativa, donde la
+        ficción dice presente.
       </p>
 
     </section>
@@ -482,7 +521,7 @@
 
     <footer>
 
-· 2026 · Segundo Semestre · Ficciones Futuras · FADU · UBA · Buenos Aires · Argentina · 
+      · 2026 · Segundo Semestre · Ficciones Futuras · FADU · UBA · Buenos Aires · Argentina ·
 
     </footer>
 
@@ -490,7 +529,3 @@
 
 </body>
 </html>
-  
-</body>
-</html>
-```
