@@ -71,10 +71,13 @@
       z-index: 10;
       background: #39c6f3;
       width: 100vw; /* Ocupa todo el ancho de la pantalla de lado a lado */
-      
-     
-      padding: 0 0 20px 0; /* Sin padding superior para respetar los 35px del header */
+      margin-left: calc(-50vw + 50%); /* Truco CSS para romper el contenedor principal y ensanchar de punta a punta */
+      padding: 15px 40px; /* Espaciado interno superior/inferior y laterales */
       margin-bottom: 150px; /* 150px hacia el texto, igual a consigna.html */
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
 
       /* Mismos estilos que .subtitle en consigna.html */
       font-size: 16px;
