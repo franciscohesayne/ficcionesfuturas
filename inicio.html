@@ -40,10 +40,31 @@
       padding: 70px 0 120px;
     }
 
-    /* TÍTULO */
+   
+    header {  /* TÍTULO encabezado */
+      margin-bottom: 35px; /* 35px para igualar la distancia de consigna.html */
+    }
 
-    header {
-      margin-bottom: 25px; /* 35px para igualar la distancia de consigna.html */
+    .header-container {
+      display: flex;
+      align-items: center; /* Alinea el logo y el texto verticalmente al centro */
+      gap: 20px;          /* Espacio entre el logo y la palabra Ficciones */
+      
+      /* SI QUERÉS MOVER TODO EL BLOQUE (LOGO + TÍTULO) MÁS ARRIBA O A LA IZQUIERDA: */
+      margin-top: 0px;    /* Subilo o bajalo cambiando este valor (ej: -10px para subirlo) */
+      margin-left: 0px;   /* Movelo a la izquierda o derecha (ej: -15px para correrlo a la izquierda) */
+    }
+
+    .header-logo {
+      /* ACÁ MANEJÁS EL TAMAÑO DEL LOGO: */
+      height: 60px;       /* Probá cambiando este número (ej: 40px para más chico, 80px para más grande) */
+      width: auto;
+      display: block;
+      
+      /* SI QUERÉS AJUSTAR EL LOGO DE FORMA INDEPENDIENTE (ARRIBA/ABAJO O IZQUIERDA): */
+      position: relative;
+      top: 0px;           /* Positivo baja el logo, negativo lo sube */
+      left: 0px;          /* Positivo lo mueve a la derecha, negativo a la izquierda */
     }
 
     .title {
@@ -53,8 +74,8 @@
       letter-spacing: -0.065em;
       margin: 0;
 
-      /* Sombra del título */
-      text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+
+      text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4); /* Sombra del título */
     }
 
     .title span {
@@ -308,12 +329,16 @@
 
   <main>
 
+<!-- TÍTULO Y LOGO -->
+
     <header id="inicio">
-
-      <h1 class="title">
-        Ficciones <span>Futuras</span>
-      </h1>
-
+      <div class="header-container">
+        <!-- Logo insertado desde la carpeta img -->
+        <img src="img/FICCIONES-LOGO -PNG.png" alt="Logotipo Ficciones Futuras" class="header-logo">
+        <h1 class="title">
+          Ficciones <span>Futuras</span>
+        </h1>
+      </div>
     </header>
 
     <nav class="nav">
