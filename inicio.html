@@ -19,13 +19,12 @@
       scroll-behavior: smooth;
     }
 
- /* CUERPO */
+    /* CUERPO */
     body {
       margin: 0;
 
-      /* Degradé: celeste liso hasta el 10% y transición larga hasta el negro en el 100% */
-      background: linear-gradient(to bottom, #39c6f3 10%, #000000 100%);
-      min-height: 100vh;
+      /* Color del fondo */
+      background: #39c6f3;
 
       /* Color de la letra */
       color: #fff;
@@ -70,14 +69,12 @@
       top: 0;
       z-index: 10;
       background: #39c6f3;
-      width: 100vw; /* Ocupa todo el ancho de la pantalla de lado a lado */
-      margin-left: calc(-50vw + 50%); /* Truco CSS para romper el contenedor principal y ensanchar de punta a punta */
-      padding: 15px 40px; /* Espaciado interno superior/inferior y laterales */
-      margin-bottom: 150px; /* 150px hacia el texto, igual a consigna.html */
-
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      
+      /* Sin padding superior para respetar los 35px del header */
+      padding: 0 0 20px 0; 
+      
+      /* 150px hacia el texto, igual a consigna.html */
+      margin-bottom: 150px;
 
       /* Mismos estilos que .subtitle en consigna.html */
       font-size: 16px;
@@ -85,28 +82,6 @@
       letter-spacing: 0.08em;
     }
 
-/* ESTILO PARA EL TÍTULO A LA IZQUIERDA EN LA BARRA */
-    .nav-brand {
-      font-family: "Helvetica Rounded LT Std", "Helvetica Round", Arial, sans-serif;
-      font-weight: bold;
-      text-decoration: none;
-      color: inherit;
-    }
-
-    /* CONTENEDOR DE LOS ENLACES A LA DERECHA */
-    .nav-links {
-      display: flex;
-      gap: 35px; /* Espacio prolijo entre los botones */
-    }
-
-    .nav-links > a,
-    .consigna-trigger,
-    .expansion-trigger {
-      color: inherit;
-      text-decoration: none;
-      margin-right: 0; /* Limpiamos el margen viejo */
-    }
-    
     /* ENLACES DEL NAV */
 
     .nav > a,
@@ -342,41 +317,48 @@
 
     </header>
 
-   <!-- NAVEGACIÓN -->
     <nav class="nav">
 
-      <!-- TÍTULO A LA IZQUIERDA -->
-      <a href="#inicio" class="nav-brand">Ficciones Futuras</a>
+      <a href="#brief">Brief</a>
 
-      <!-- ENLACES A LA DERECHA -->
-      <div class="nav-links">
-        <a href="#brief">Brief</a>
-        <a href="#equipo">Docentes</a>
+      <a href="#equipo">Docentes</a>
 
-        <!-- CONSIGNA CON SUBMENÚ -->
-        <div class="consigna-item">
-          <a href="#consigna" class="consigna-trigger">Consigna</a>
-          <div class="consigna-menu">
-            <a href="#metodologia">Metodología</a>
-            <a href="#objetivos">Objetivos</a>
-            <a href="#herramientas">Herramientas</a>
-            <a href="#formato">Formato</a>
-            <a href="#agentes">Agentes</a>
-            <a href="#referentes">Referentes</a>
-            <a href="#bibliografia">Bibliografía</a>
-          </div>
+      <div class="consigna-item">
+
+        <a href="#consigna" class="consigna-trigger">
+          Consigna
+        </a>
+
+        <div class="consigna-menu">
+
+          <a href="#metodologia">Metodología</a>
+          <a href="#objetivos">Objetivos</a>
+          <a href="#herramientas">Herramientas</a>
+          <a href="#formato">Formato</a>
+          <a href="#agentes">Agentes</a>
+          <a href="#referentes">Referentes</a>
+          <a href="#bibliografia">Bibliografía</a>
+
         </div>
 
-        <a href="#contacto">Contacto</a>
-        <a href="#archivo">Archivo</a>
+      </div>
 
-        <!-- EXPANSIÓN CON SUBMENÚ -->
-        <div class="expansion-item">
-          <a href="#" class="expansion-trigger">Expansión</a>
-          <div class="expansion-menu">
-            <a href="https://ficcionesfuturas.com.ar/CRITICA.html">Posgrado</a>
-          </div>
+      <a href="#contacto">Contacto</a>
+
+      <a href="#archivo">Archivo</a>
+
+      <div class="expansion-item">
+
+        <a href="#" class="expansion-trigger">
+          Expansión
+        </a>
+
+        <div class="expansion-menu">
+
+          <a href="https://ficcionesfuturas.com.ar/CRITICA.html">Posgrado</a>
+
         </div>
+
       </div>
 
     </nav>
