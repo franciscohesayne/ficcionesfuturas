@@ -106,7 +106,7 @@
       margin-right: 0;
     }
 
-    /* NEGRITA Y AMARILLO AL PASAR EL CURSOR (GENERAL PARA TODO EL NAV) */
+    /* NEGRITA Y AMARILLO LIMPIO AL PASAR EL CURSOR (SIN SOMBRA) */
 
     .nav > a:hover,
     .menu-trigger:hover,
@@ -115,10 +115,9 @@
       text-shadow:
         0.5px 0 0 currentColor,
         -0.5px 0 0 currentColor;
-      2px 2px 6px rgba(0, 0, 0, 0.3); /* Sombra suave para darle volumen */
     }
 
-    /* MENÚS DESPLEGABLES (DROPDOWN) CON CAJA SÓLIDA */
+    /* MENÚS DESPLEGABLES (DROPDOWN) CON EL MISMO CELESTE DE FONDO */
 
     .nav-item {
       position: relative;
@@ -133,11 +132,12 @@
       padding-top: 15px;
       white-space: nowrap;
 
-/* Fondo azul profundo/oscuro que combina con la paleta de la web */
-      background: #006699; 
-      padding: 18px 20px;
-      border-radius: 6px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      /* Mismo celeste del background con una sutil sombra flotante */
+      background: #39c6f3; 
+      padding: 15px 18px;
+      border-radius: 4px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
 
     .nav-item:hover .sub-menu {
       display: block;
@@ -147,8 +147,9 @@
       display: block;
       color: inherit;
       text-decoration: none;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       font-size: 14px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25); /* Sombra suave para legibilidad en el submenú */
     }
 
     .sub-menu a:last-child {
