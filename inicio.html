@@ -40,31 +40,16 @@
       padding: 70px 0 120px;
     }
 
-   
-    header {  /* TÍTULO encabezado */
-      margin-bottom: 35px; /* 35px para igualar la distancia de consigna.html */
+   /* TÍTULO Y LOGO */
+
+    header {
+      margin-bottom: 25px; 
+      position: relative; /* Contenedor de referencia para el logo flotante */
+      padding-left: 0;    /* Asegura que el título arranque contra el margen izquierdo */
     }
 
     .header-container {
-      display: flex;
-      align-items: center; /* Alinea el logo y el texto verticalmente al centro */
-      gap: 20px;          /* Espacio entre el logo y la palabra Ficciones */
-      
-      /* SI QUERÉS MOVER TODO EL BLOQUE (LOGO + TÍTULO) MÁS ARRIBA O A LA IZQUIERDA: */
-      margin-top: 0px;    /* Subilo o bajalo cambiando este valor (ej: -10px para subirlo) */
-      margin-left: -170px;   /* Movelo a la izquierda o derecha (ej: -15px para correrlo a la izquierda) */
-    }
-
-    .header-logo {
-      /* ACÁ MANEJÁS EL TAMAÑO DEL LOGO: */
-      height: 80px;       /* Probá cambiando este número (ej: 40px para más chico, 80px para más grande) */
-      width: auto;
-      display: block;
-      
-      /* SI QUERÉS AJUSTAR EL LOGO DE FORMA INDEPENDIENTE (ARRIBA/ABAJO O IZQUIERDA): */
-      position: relative;
-      top: 0px;           /* Positivo baja el logo, negativo lo sube */
-      left: 0px;          /* Positivo lo mueve a la derecha, negativo a la izquierda */
+      display: block;     /* Rompemos el flex para que el título mande en su lugar exacto */
     }
 
     .title {
@@ -74,13 +59,25 @@
       letter-spacing: -0.065em;
       margin: 0;
 
-
-      text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4); /* Sombra del título */
+      /* Sombra del título */
+      text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
     }
 
     .title span {
       display: inline;
     }
+
+    .header-logo {
+      /* Tamaño del logo */
+      height: 55px; /* Modificá este valor si lo querés más grande o chico */
+      width: auto;
+      
+      /* LO SACAMOS DE LA FILA Y LO CORREMOS A LA IZQUIERDA */
+      position: absolute;
+      left: -75px;  /* Probá este valor: cuanto más chico o grande el número, más a la izquierda se mete */
+      top: 15px;    /* Ajusta la altura para que quede alineado con las letras de Ficciones */
+    }
+    
 
     /* NAV PRINCIPAL */
 
