@@ -26,41 +26,43 @@
       padding: 20px;
     }
 
-    /* CONTENEDOR DEL VIDEO DE FONDO (Ocupa toda la pantalla detrás de todo) */
+    /* CONTENEDOR DEL VIDEO DE FONDO */
     .bg-video {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      object-fit: cover; /* Asegura que cubra toda la pantalla sin deformarse */
-      z-index: -1;      /* Lo manda al fondo de la página */
+      object-fit: cover;
+      z-index: -1;
     }
 
     /* Contenedor desplazado en vertical y corrido a la derecha */
     .hero-content {
       display: flex;
       flex-direction: column;
-      align-items: flex-start; /* Alinea los elementos a la izquierda dentro de su bloque */
+      align-items: flex-start;
       text-align: left;
       
-      /* Mantiene la posición vertical exacta que logramos */
       margin-top: 180px; 
-      
-      /* Mueve el bloque hacia la derecha para alinearlo con el final de 'Ficciones' */
       margin-left: 3px; 
     }
 
-    /* Subtítulo institucional */
+    /* Subtítulo institucional (Inicialmente oculto hasta que termine el video) */
     .welcome-subtitle {
       font-size: 15px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       margin-bottom: 25px;
       text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+      
+      /* Propiedades para la aparición gradual */
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.8s ease;
     }
 
-    /* Estilo del botón ENTRAR (Inicialmente oculto hasta que termine el video) */
+    /* Estilo del botón ENTRAR (Inicialmente oculto) */
     .enter-btn {
       color: #fff;
       text-decoration: none;
@@ -78,10 +80,10 @@
       transition: opacity 0.8s ease, background 0.3s ease, color 0.3s ease;
     }
 
-    /* Clase que se activa mediante JavaScript al terminar el video */
-    .enter-btn.show {
-      opacity: 1;
-      visibility: visible;
+    /* Clase que se activa mediante JavaScript al terminar el video para ambos elementos */
+    .show-elements {
+      opacity: 1 !important;
+      visibility: visible !important;
     }
 
     .enter-btn:hover {
@@ -92,7 +94,7 @@
 </head>
 <body>
 
-  <!-- VIDEO DE FONDO: Reemplaza a la imagen estática, se reproduce una sola vez y se frena en el último frame -->
+  <!-- VIDEO DE FONDO: Reproduce una única vez los 6 segundos y se detiene -->
   <video id="introVideo" class="bg-video" autoplay muted playsinline>
     <source src="VIDEO/Video Project 6.mp4" type="video/mp4">
     Tu navegador no soporta videos HTML5.
@@ -100,18 +102,20 @@
 
   <!-- Bloque con desplazamiento vertical y horizontal exacto -->
   <div class="hero-content">
-    <div class="welcome-subtitle">FADU · UBA · 2026</div>
+    <div id="welcomeSubtitle" class="welcome-subtitle">FADU · UBA · 2026</div>
     <a href="inicio.html" id="enterBtn" class="enter-btn">ENTRAR</a>
   </div>
 
-  <!-- SCRIPT PARA MOSTRAR EL BOTÓN AL FINALIZAR EL VIDEO -->
+  <!-- SCRIPT PARA MOSTRAR LOS ELEMENTOS AL FINALIZAR EL VIDEO -->
   <script>
     const video = document.getElementById('introVideo');
+    const subtitle = document.getElementById('welcomeSubtitle');
     const btn = document.getElementById('enterBtn');
 
     // Detecta el momento exacto en que termina el video de 6 segundos
     video.addEventListener('ended', function() {
-      btn.classList.add('show');
+      subtitle.classList.add('show-elements');
+      btn.classList.add('show-elements');
     });
   </script>
 
