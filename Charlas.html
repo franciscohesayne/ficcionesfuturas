@@ -1,1 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Charlas Teórcas</title>
+
+  <!-- ESTILO -->
+  <style>
+
+    /* CSS */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Baja suave */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* CUERPO */
+    body {
+      margin: 0;
+
+      /* Color del fondo */
+      background: linear-gradient(to bottom, #39c6f3 0%, #39c6f3 10%, #000000 100%);
+      
+      /* Color de la letra */
+      color: #fff;
+
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 18px;
+      line-height: 1.45;
+    }
+
+    main {
+      width: min(1100px, calc(100% - 80px));
+      margin: 0 auto;
+      padding: 70px 0 120px;
+    }
+
+    /* TÍTULO Y LOGO */
+
+    header {
+      margin-bottom: 35px; 
+      position: relative;
+    }
+
+    .header-container {
+      display: block;
+    }
+
+    .title {
+      font-size: clamp(48px, 9vw, 120px);
+      line-height: 0.9;
+      font-weight: 700;
+      letter-spacing: -0.065em;
+      margin: 0;
+      transform: translateX(-9px);
+      text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .title span {
+      display: inline;
+    }
+
+    .header-logo {
+      height: 80px;
+      width: auto;
+      position: absolute;
+      left: -180px;
+      top: 12px;
+    }
+
+    /* NAV PRINCIPAL (STICKY) */
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: #39c6f3;
+
+      
+      padding: 0 0 1px 0; 
+      margin-bottom: 165px;
+
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+    }
+
+    /* ENLACES Y CONTENEDORES DEL NAV */
+
+    .nav > a,
+    .nav-item,
+    .menu-trigger {
+      color: inherit;
+      text-decoration: none;
+      margin-right: 0;
+    }
+
+    /* NEGRITA Y AMARILLO LIMPIO AL PASAR EL CURSOR (SIN SOMBRA) */
+
+    .nav > a:hover,
+    .menu-trigger:hover,
+    .sub-menu a:hover {
+      color: #ffe00b;
+      text-shadow:
+        0.5px 0 0 currentColor,
+        -0.5px 0 0 currentColor;
+    }
+
+    /* MENÚS DESPLEGABLES (DROPDOWN) CON EL MISMO CELESTE DE FONDO */
+
+    .nav-item {
+      position: relative;
+      display: inline-block;
+    }
+
+    .sub-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      padding-top: 15px;
+      white-space: nowrap;
+
+      /* Mismo celeste del background con una sutil sombra flotante */
+      background: #39c6f3; 
+      padding: 15px 18px;
+      border-radius: 4px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-item:hover .sub-menu {
+      display: block;
+    }
+
+    .sub-menu a {
+      display: block;
+      color: inherit;
+      text-decoration: none;
+      margin-bottom: 10px;
+      font-size: 14px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25); /* Sombra suave para legibilidad en el submenú */
+    }
+
+    .sub-menu a:last-child {
+      margin-bottom: 0;
+    }
