@@ -6,7 +6,7 @@
 
   <title>Ficciones Futuras — Charlas Teóricas</title>
 
-  <!-- ESTILO UNIFICADO -->
+  <!-- ESTILO UNIFICADO CON EL INICIO -->
   <style>
 
     * {
@@ -28,17 +28,16 @@
       line-height: 1.45;
     }
 
+    /* CONTENEDOR PRINCIPAL EDITORIAL (Idéntico a inicio.html) */
     main {
       width: min(1200px, calc(100% - 80px));
       margin: 0 auto;
       padding: 50px 0 120px;
     }
 
-    /* TÍTULO Y LOGO */
-
+    /* CABECERA: IDÉNTICA A INICIO.HTML PARA QUE NO SE MUEVA NADA */
     header {
       margin-bottom: 25px; 
-      position: relative;
       display: flex;
       align-items: center;
       gap: 30px;
@@ -68,8 +67,7 @@
       width: auto;
     }
 
-    /* NAV PRINCIPAL (HORIZONTAL) */
-
+    /* BARRA DE NAVEGACIÓN SUPERIOR HORIZONTAL */
     .nav {
       display: flex;
       flex-wrap: wrap;
@@ -156,7 +154,7 @@
       max-width: 850px;
     }
 
-    /* ESTILOS PARA LOS ENLACES A FLAYERS Y VIDEOS */
+    /* ESTILOS PARA LOS ENLACES DE INSTAGRAM Y EL CONTENEDOR DE YOUTUBE */
 
     .charlas-links p {
       margin: 0 0 15px 0;
@@ -173,6 +171,28 @@
     .charlas-links a:hover {
       color: #ffe00b;
       border-color: #ffe00b;
+    }
+
+    /* CONTENEDOR RESPONSIVE PARA EL VIDEO DE YOUTUBE EMBEDDED */
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* Proporción 16:9 */
+      height: 0;
+      margin: 30px 0 50px 0;
+      background: #000;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
     }
 
     /* VERSIÓN CELULAR */
@@ -196,7 +216,7 @@
   
   <main>
 
-    <!-- TÍTULO Y LOGO -->
+    <!-- TÍTULO Y LOGO (Idéntico en tamaño y posición a inicio.html) -->
     <header id="inicio">
       <div class="header-container">
         <img src="IMAGENES/ff_logo.png" alt="Logotipo Ficciones Futuras" class="header-logo">
@@ -220,13 +240,18 @@
           Conferencias invitadas y registros de referentes externos que visitan el espacio académico.
         </p>
         
-        <!-- ACÁ PEGÁS LOS LINKS A INSTAGRAM Y YOUTUBE -->
+        <!-- ENLACES A FLYERS DE INSTAGRAM -->
         <p><a href="https://www.instagram.com/p/DdFLtxymnZX/?img_index=1" target="_blank">→ Flyer / Publicación en Instagram (Charla 1)</a></p>
-        <p><a href="https://www.instagram.com/p/DZD_U3smhQM/?img_index=1" target="_blank">→ Flyer / Publicación en Instagram (Charla 2)</a></p>
-        <p><a href="https://www.youtube.com/watch?v=UY6PWVTDns8" target="_blank">→ Video completo en YouTube (Charla 1)</a></p>
         
-        <p style="margin-top: 30px;"><a href="A_PEGAR_LINK_DE_INSTAGRAM_AQUI" target="_blank">→ Flyer / Publicación en Instagram (Charla 2)</a></p>
-        <p><a href="A_PEGAR_LINK_DE_YOUTUBE_AQUI" target="_blank">→ Video completo en YouTube (Charla 2)</a></p>
+        <!-- VIDEO DE YOUTUBE INCRUSTADO DIRECTAMENTE (Reproductor embebido) -->
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/UY6PWVTDns8" title="Charla Teórica - Ficciones Futuras" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+        <!-- SEGUNDA CHARLA (Ejemplo) -->
+        <p style="margin-top: 50px;"><a href="https://www.instagram.com/p/DZD_U3smhQM/?img_index=1" target="_blank">→ Flyer / Publicación en Instagram (Charla 2)</a></p>
+        
+        <!-- Si querés agregar otro video de YouTube abajo, solo repetís el .video-container con su respectivo link de embed -->
       </div>
     </section>
 
