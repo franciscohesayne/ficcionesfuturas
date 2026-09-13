@@ -6,7 +6,7 @@
 
   <title>Ficciones Futuras — Charlas Teóricas</title>
 
-  <!-- ESTILO UNIFICADO CON EL INICIO -->
+  <!-- ESTILO -->
   <style>
 
     * {
@@ -28,16 +28,18 @@
       line-height: 1.45;
     }
 
-    /* CONTENEDOR PRINCIPAL EDITORIAL (Idéntico a inicio.html) */
+    /* CONTENEDOR PRINCIPAL CLÁSICO (Ancho centrado tradicional) */
     main {
-      width: min(1200px, calc(100% - 80px));
+      width: min(1100px, calc(100% - 80px));
       margin: 0 auto;
-      padding: 50px 0 120px;
+      padding: 70px 0 120px;
     }
 
-    /* CABECERA: IDÉNTICA A INICIO.HTML PARA QUE NO SE MUEVA NADA */
+    /* TÍTULO Y LOGO */
+
     header {
-      margin-bottom: 25px; 
+      margin-bottom: 35px; 
+      position: relative;
       display: flex;
       align-items: center;
       gap: 30px;
@@ -94,64 +96,17 @@
         -0.5px 0 0 currentColor;
     }
 
-    /* MENÚS DESPLEGABLES (DROPDOWN) */
-
-    .nav-item {
-      position: relative;
-      display: inline-block;
-    }
-
-    .sub-menu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      padding-top: 15px;
-      white-space: nowrap;
-      background: #39c6f3; 
-      padding: 15px 18px;
-      border-radius: 4px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-      z-index: 20;
-    }
-
-    .nav-item:hover .sub-menu {
-      display: block;
-    }
-
-    .sub-menu a {
-      display: block;
-      color: inherit;
-      text-decoration: none;
-      margin-bottom: 10px;
-      font-size: 14px;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
-    }
-
-    .sub-menu a:last-child {
-      margin-bottom: 0;
-    }
-
-    /* ESTRUCTURA DE SECCIONES EN DOS COLUMNAS (TÍTULO IZQ / CONTENIDO DER) */
-
-    .editorial-section {
-      display: grid;
-      grid-template-columns: 140px 1fr;
-      gap: 40px;
-      margin-bottom: 150px;
-      align-items: start;
-    }
-
-    .section-label {
+    /* TÍTULOS DE SECCIÓN TRADICIONALES */
+    .section-title {
       font-size: 14px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      padding-top: 5px;
-      opacity: 0.85;
+      margin-bottom: 30px;
+      margin-top: 100px;
     }
 
-    .section-content {
-      max-width: 850px;
+    .section-title:first-of-type {
+      margin-top: 0;
     }
 
     /* ESTILOS PARA LOS ENLACES DE INSTAGRAM Y EL CONTENEDOR DE YOUTUBE */
@@ -177,6 +132,7 @@
     .video-container {
       position: relative;
       width: 100%;
+      max-width: 850px;
       padding-bottom: 56.25%; /* Proporción 16:9 */
       height: 0;
       margin: 30px 0 50px 0;
@@ -197,14 +153,17 @@
 
     /* VERSIÓN CELULAR */
 
-    @media (max-width: 800px) {
+    @media (max-width: 700px) {
+      body {
+        font-size: 16px;
+      }
+      main {
+        width: calc(100% - 40px);
+        padding-top: 35px;
+      }
       header {
         flex-direction: column;
         align-items: flex-start;
-        gap: 15px;
-      }
-      .editorial-section {
-        grid-template-columns: 1fr;
         gap: 15px;
       }
     }
@@ -216,7 +175,7 @@
   
   <main>
 
-    <!-- TÍTULO Y LOGO (Idéntico en tamaño y posición a inicio.html) -->
+    <!-- TÍTULO Y LOGO -->
     <header id="inicio">
       <div class="header-container">
         <img src="IMAGENES/ff_logo.png" alt="Logotipo Ficciones Futuras" class="header-logo">
@@ -232,46 +191,44 @@
       <a href="#propias">Propias</a>
     </nav>
 
-    <!-- SECCIÓN ARRIBOS (DOS COLUMNAS) -->
-    <section class="editorial-section" id="arribos">
-      <div class="section-label">Arribos</div>
-      <div class="section-content charlas-links">
-        <p style="font-size: 21px; margin-bottom: 30px;">
+    <!-- SECCIÓN ARRIBOS -->
+    <section id="arribos">
+      <div class="section-title">Arribos</div>
+      <div class="charlas-links">
+        <p style="font-size: 21px; margin-bottom: 30px; max-width: 850px;">
           Conferencias invitadas y registros de referentes externos que visitan el espacio académico.
         </p>
         
-        <!-- ENLACES A FLYERS DE INSTAGRAM -->
+        <!-- CHARLA 1 -->
         <p><a href="https://www.instagram.com/p/DdFLtxymnZX/?img_index=1" target="_blank">→ Flyer / Publicación en Instagram (Charla 1)</a></p>
         
-        <!-- VIDEO DE YOUTUBE INCRUSTADO DIRECTAMENTE (Reproductor embebido) -->
         <div class="video-container">
           <iframe src="https://www.youtube.com/embed/UY6PWVTDns8" title="Charla Teórica - Ficciones Futuras" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
 
-                <div class="video-container">
-          <iframe src="https://www.youtube.com/watch?v=poq0zp0Y2bQtitle="Charla Teórica - Ficciones Futuras" allow="accelerometer; 
-            autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-                  
-        <!-- SEGUNDA CHARLA (Ejemplo) -->
+        <!-- CHARLA 2 -->
         <p style="margin-top: 50px;"><a href="https://www.instagram.com/p/DZD_U3smhQM/?img_index=1" target="_blank">→ Flyer / Publicación en Instagram (Charla 2)</a></p>
         
-        <!-- Si querés agregar otro video de YouTube abajo, solo repetís el .video-container con su respectivo link de embed -->
+        <div class="video-container">
+          <!-- Nota: para embeber correctamente se usa /embed/ en lugar de /watch?v= -->
+          <iframe src="https://www.youtube.com/embed/poq0zp0Y2bQ" title="Charla Teórica - Ficciones Futuras" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
       </div>
     </section>
 
     <!-- SECCIÓN PARTIDAS -->
-    <section class="editorial-section" id="partidas">
-      <div class="section-label">Partidas</div>
-      <div class="section-content">
+    <section id="partidas">
+      <div class="section-title">Partidas</div>
+      <div class="charlas-links">
         <p>Próximamente contenido de Partidas.</p>
       </div>
     </section>
 
     <!-- SECCIÓN PROPIAS -->
-    <section class="editorial-section" id="propias">
-      <div class="section-label">Propias</div>
-      <div class="section-content">
+    <section id="propias">
+      <div class="section-title">Propias</div>
+      <div class="charlas-links">
         <p>Próximamente contenido de Propias.</p>
       </div>
     </section>
