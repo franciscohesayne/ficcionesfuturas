@@ -9,8 +9,6 @@
   <!-- ESTILO -->
   <style>
 
-    /* CSS */
-
     * {
       box-sizing: border-box;
     }
@@ -44,7 +42,7 @@
     /* TÍTULO Y LOGO */
 
     header {
-      margin-bottom: 35px; 
+      margin-bottom: 55px; 
       position: relative;
     }
 
@@ -74,27 +72,46 @@
       top: 12px;
     }
 
-    /* NAV PRINCIPAL (STICKY) */
+    /* NAV PRINCIPAL (STICKY) A ANCHO COMPLETO */
 
-    .nav {
+    .nav-container {
       position: sticky;
       top: 0;
       z-index: 10;
       background: #39c6f3;
-
-      
-      padding: 0 0 1px 0; 
       margin-bottom: 165px;
+      width: 100%;
+    }
+
+    .nav {
+      width: 100%;
+      padding: 18px 40px; /* Margen lateral para que respire de los bordes de la pantalla */
 
       font-size: 16px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
 
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap; /* Evita que las opciones bajen de renglón */
       justify-content: space-between;
       align-items: center;
-      gap: 25px;
+      gap: 15px;
+    }
+
+    /* IMAGEN PNG DENTRO DEL NAV */
+    .nav-brand {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      position: relative;
+      left: -40px; /* Compensa el padding del nav para alinear con el margen general */
+    }
+
+    .nav-brand-img {
+      height: 32px;
+      width: auto;
+      display: block;
+      filter: drop-shadow(1px 1px 4px rgba(0, 0, 0, 0.2));
     }
 
     /* ENLACES Y CONTENEDORES DEL NAV */
@@ -150,7 +167,7 @@
       text-decoration: none;
       margin-bottom: 10px;
       font-size: 14px;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25); /* Sombra suave para legibilidad en el submenú */
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
     }
 
     .sub-menu a:last-child {
@@ -161,7 +178,7 @@
 
     .brief {
       max-width: 850px;
-      padding-top: 1px; /* Ajuste milimétrico vertical */
+      padding-top: 1px;
     }
 
     .brief p {
@@ -259,6 +276,16 @@
 
     /* VERSIÓN CELULAR */
 
+    @media (max-width: 950px) {
+      .header-logo {
+        position: static;
+        margin-bottom: 20px;
+      }
+      .nav-brand {
+        left: 0;
+      }
+    }
+
     @media (max-width: 700px) {
 
       body {
@@ -274,10 +301,16 @@
         margin-bottom: 35px; 
       }
 
+      .nav-container {
+        position: static;
+      }
+
       .nav {
-        margin-bottom: 100px;
+        width: calc(100% - 40px);
+        margin: 0 auto 100px;
         flex-direction: column;
         align-items: flex-start;
+        padding: 0;
       }
 
       .title span {
@@ -313,7 +346,7 @@
   
   <main>
 
-  <!-- TÍTULO Y LOGO -->
+    <!-- TÍTULO Y LOGO -->
     <header id="inicio">
       <div class="header-container">
         <img src="IMAGENES/ff_logo.png" alt="Logotipo Ficciones Futuras" class="header-logo">
@@ -322,9 +355,17 @@
         </h1>
       </div>
     </header>
+
+  </main>
   
-    <!-- NAVEGACIÓN -->
+  <!-- NAVEGACIÓN (STICKY Y A UNA SOLA LÍNEA) -->
+  <div class="nav-container">
     <nav class="nav">
+
+      <!-- IMAGEN PNG COMO ENLACE AL INICIO -->
+      <a href="#inicio" class="nav-brand">
+        <img src="IMAGENES/titiulo.png" alt="Ficciones Futuras" class="nav-brand-img">
+      </a>
 
       <!-- 1. BRIEF -->
       <a href="#brief">Brief</a>
@@ -362,10 +403,8 @@
         </div>
       </div>
 
-      
       <!-- 6. TEÓRICAS -->
       <a href="https://ficcionesfuturas.com.ar/Charlas.html">Teóricas</a>
-
 
       <!-- 7. POSGRADO -->
       <a href="https://ficcionesfuturas.com.ar/CRITICA.html">Posgrado</a>
@@ -385,12 +424,16 @@
       <!-- 9. RECURSOS -->
       <div class="nav-item">
         <a href="#" class="menu-trigger">Recursos</a>
-           <div class="sub-menu">
+        <div class="sub-menu">
           <a href="#">Sign in</a>
           <a href="#">Log in</a>
-                </div>
-              </div>
+        </div>
+      </div>
+
     </nav>
+  </div>
+
+  <main>
 
     <!-- BRIEF -->
     <section class="brief" id="brief">
