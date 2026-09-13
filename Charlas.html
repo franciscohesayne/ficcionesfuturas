@@ -4,18 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Charlas Teórcas</title>
+  <title>Ficciones Futuras — Charlas Teóricas</title>
 
-  <!-- ESTILO -->
+  <!-- ESTILO UNIFICADO -->
   <style>
-
-    /* CSS */
 
     * {
       box-sizing: border-box;
     }
 
-    /* Baja suave */
     html {
       scroll-behavior: smooth;
     }
@@ -23,42 +20,42 @@
     /* CUERPO */
     body {
       margin: 0;
-
-      /* Color del fondo */
-      background: #39c6f3;
-      
-      /* Color de la letra */
+      background: linear-gradient(to bottom, #39c6f3 0%, #39c6f3 10%, #000000 100%);
+      min-height: 100vh;
       color: #fff;
-
       font-family: Arial, Helvetica, sans-serif;
       font-size: 18px;
       line-height: 1.45;
     }
 
     main {
-      width: min(1100px, calc(100% - 80px));
+      width: min(1200px, calc(100% - 80px));
       margin: 0 auto;
-      padding: 70px 0 120px;
+      padding: 50px 0 120px;
     }
 
     /* TÍTULO Y LOGO */
 
     header {
-      margin-bottom: 35px; 
+      margin-bottom: 25px; 
       position: relative;
+      display: flex;
+      align-items: center;
+      gap: 30px;
     }
 
     .header-container {
-      display: block;
+      display: flex;
+      align-items: center;
+      gap: 30px;
     }
 
     .title {
-      font-size: clamp(48px, 9vw, 120px);
+      font-size: clamp(40px, 7vw, 100px);
       line-height: 0.9;
       font-weight: 700;
       letter-spacing: -0.065em;
       margin: 0;
-      transform: translateX(-9px);
       text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
     }
 
@@ -67,49 +64,30 @@
     }
 
     .header-logo {
-      height: 80px;
+      height: 65px;
       width: auto;
-      position: absolute;
-      left: -180px;
-      top: 12px;
     }
 
-    /* NAV PRINCIPAL (STICKY) */
+    /* NAV PRINCIPAL (HORIZONTAL) */
 
     .nav {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: #39c6f3;
-
-      
-      padding: 0 0 1px 0; 
-      margin-bottom: 165px;
-
-      font-size: 16px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 25px;
+      gap: 30px;
+      margin-bottom: 120px;
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
     }
 
-    /* ENLACES Y CONTENEDORES DEL NAV */
-
-    .nav > a,
+    .nav a,
     .nav-item,
     .menu-trigger {
       color: inherit;
       text-decoration: none;
-      margin-right: 0;
     }
 
-    /* NEGRITA Y AMARILLO LIMPIO AL PASAR EL CURSOR (SIN SOMBRA) */
-
-    .nav > a:hover,
+    .nav a:hover,
     .menu-trigger:hover,
     .sub-menu a:hover {
       color: #ffe00b;
@@ -118,7 +96,7 @@
         -0.5px 0 0 currentColor;
     }
 
-    /* MENÚS DESPLEGABLES (DROPDOWN) CON EL MISMO CELESTE DE FONDO */
+    /* MENÚS DESPLEGABLES (DROPDOWN) */
 
     .nav-item {
       position: relative;
@@ -132,12 +110,11 @@
       left: 0;
       padding-top: 15px;
       white-space: nowrap;
-
-      /* Mismo celeste del background con una sutil sombra flotante */
       background: #39c6f3; 
       padding: 15px 18px;
       border-radius: 4px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      z-index: 20;
     }
 
     .nav-item:hover .sub-menu {
@@ -150,52 +127,125 @@
       text-decoration: none;
       margin-bottom: 10px;
       font-size: 14px;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25); /* Sombra suave para legibilidad en el submenú */
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
     }
 
     .sub-menu a:last-child {
       margin-bottom: 0;
     }
 
+    /* ESTRUCTURA DE SECCIONES EN DOS COLUMNAS (TÍTULO IZQ / CONTENIDO DER) */
 
+    .editorial-section {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 40px;
+      margin-bottom: 150px;
+      align-items: start;
+    }
 
+    .section-label {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding-top: 5px;
+      opacity: 0.85;
+    }
 
+    .section-content {
+      max-width: 850px;
+    }
 
+    /* ESTILOS PARA LOS ENLACES A FLAYERS Y VIDEOS */
 
-    
+    .charlas-links p {
+      margin: 0 0 15px 0;
+    }
 
-      </style>
+    .charlas-links a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .charlas-links a:hover {
+      color: #ffe00b;
+      border-color: #ffe00b;
+    }
+
+    /* VERSIÓN CELULAR */
+
+    @media (max-width: 800px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+      }
+      .editorial-section {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+    }
+
+  </style>
 </head>
 
 <body>
   
   <main>
 
-  <!-- TÍTULO Y LOGO -->
+    <!-- TÍTULO Y LOGO -->
     <header id="inicio">
       <div class="header-container">
         <img src="IMAGENES/ff_logo.png" alt="Logotipo Ficciones Futuras" class="header-logo">
-        <h1 class="title"> Charlas<span>Teóricas</span>
-        </h1>
+        <h1 class="title">Charlas <span>Teóricas</span></h1>
       </div>
-
-         <!-- NAVEGACIÓN -->
-    <nav class="nav">
-
-      <!-- 1. ARRIBOS -->
-      <a href="#arribos">Arribos</a>
-
-      <!-- 2. PARTIDAS -->
-      <a href="#partidas">Partidas</a>
-
-      <!-- 3. PROPIAS -->
-      <a href="#propias">Propias</a>
-
-      
     </header>
 
-
-    
-  
     <!-- NAVEGACIÓN -->
     <nav class="nav">
+      <a href="index.html">← Home</a>
+      <a href="#arribos">Arribos</a>
+      <a href="#partidas">Partidas</a>
+      <a href="#propias">Propias</a>
+    </nav>
+
+    <!-- SECCIÓN ARRIBOS (DOS COLUMNAS) -->
+    <section class="editorial-section" id="arribos">
+      <div class="section-label">Arribos</div>
+      <div class="section-content charlas-links">
+        <p style="font-size: 21px; margin-bottom: 30px;">
+          Conferencias invitadas y registros de referentes externos que visitan el espacio académico.
+        </p>
+        
+        <!-- ACÁ PEGÁS LOS LINKS A INSTAGRAM Y YOUTUBE -->
+        <p><a href="A_PEGAR_LINK_DE_INSTAGRAM_AQUI" target="_blank">→ Flyer / Publicación en Instagram (Charla 1)</a></p>
+        <p><a href="A_PEGAR_LINK_DE_YOUTUBE_AQUI" target="_blank">→ Video completo en YouTube (Charla 1)</a></p>
+        
+        <p style="margin-top: 30px;"><a href="A_PEGAR_LINK_DE_INSTAGRAM_AQUI" target="_blank">→ Flyer / Publicación en Instagram (Charla 2)</a></p>
+        <p><a href="A_PEGAR_LINK_DE_YOUTUBE_AQUI" target="_blank">→ Video completo en YouTube (Charla 2)</a></p>
+      </div>
+    </section>
+
+    <!-- SECCIÓN PARTIDAS -->
+    <section class="editorial-section" id="partidas">
+      <div class="section-label">Partidas</div>
+      <div class="section-content">
+        <p>Próximamente contenido de Partidas.</p>
+      </div>
+    </section>
+
+    <!-- SECCIÓN PROPIAS -->
+    <section class="editorial-section" id="propias">
+      <div class="section-label">Propias</div>
+      <div class="section-content">
+        <p>Próximamente contenido de Propias.</p>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>
