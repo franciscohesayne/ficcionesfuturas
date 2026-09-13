@@ -12,11 +12,6 @@
       margin: 0;
       /* Fondo celeste base */
       background-color: #39c6f3;
-      /* La imagen ocupa todo el ancho y alto de la pantalla */
-      background-image: url('IMAGENES/FICCIONES-CENTRADO2.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
       
       min-height: 100vh;
       color: #fff;
@@ -29,6 +24,17 @@
       align-items: center;
       text-align: center;
       padding: 20px;
+    }
+
+    /* CONTENEDOR DEL VIDEO DE FONDO (Ocupa toda la pantalla detrás de todo) */
+    .bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover; /* Asegura que cubra toda la pantalla sin deformarse */
+      z-index: -1;      /* Lo manda al fondo de la página */
     }
 
     /* Contenedor desplazado en vertical y corrido a la derecha */
@@ -54,7 +60,7 @@
       text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
     }
 
-    /* Estilo del botón ENTRAR */
+    /* Estilo del botón ENTRAR (Inicialmente oculto hasta que termine el video) */
     .enter-btn {
       color: #fff;
       text-decoration: none;
@@ -64,9 +70,20 @@
       padding: 12px 35px;
       border: 2px solid #fff;
       border-radius: 4px;
-      transition: all 0.3s ease;
       background: rgba(0, 0, 0, 0.15);
+      
+      /* Propiedades para la aparición gradual */
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.8s ease, background 0.3s ease, color 0.3s ease;
     }
+
+    /* Clase que se activa mediante JavaScript al terminar el video */
+    .enter-btn.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
     .enter-btn:hover {
       background: #fff;
       color: #39c6f3;
@@ -75,11 +92,28 @@
 </head>
 <body>
 
+  <!-- VIDEO DE FONDO: Reemplaza a la imagen estática, se reproduce una sola vez y se frena en el último frame -->
+  <video id="introVideo" class="bg-video" autoplay muted playsinline>
+    <source src="VIDEO/Video Project 6.mp4" type="video/mp4">
+    Tu navegador no soporta videos HTML5.
+  </video>
+
   <!-- Bloque con desplazamiento vertical y horizontal exacto -->
   <div class="hero-content">
     <div class="welcome-subtitle">FADU · UBA · 2026</div>
-    <a href="inicio.html" class="enter-btn">ENTRAR</a>
+    <a href="inicio.html" id="enterBtn" class="enter-btn">ENTRAR</a>
   </div>
+
+  <!-- SCRIPT PARA MOSTRAR EL BOTÓN AL FINALIZAR EL VIDEO -->
+  <script>
+    const video = document.getElementById('introVideo');
+    const btn = document.getElementById('enterBtn');
+
+    // Detecta el momento exacto en que termina el video de 6 segundos
+    video.addEventListener('ended', function() {
+      btn.classList.add('show');
+    });
+  </script>
 
 </body>
 </html>
