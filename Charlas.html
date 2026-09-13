@@ -34,7 +34,7 @@
       margin: 0 auto;
       padding: 70px 0 120px;
     }
- /* TÍTULO Y LOGO */
+   /* TÍTULO Y LOGO */
 
     header {
       margin-bottom: 35px; 
@@ -127,14 +127,14 @@
     }
 
     /* CONTENEDOR RESPONSIVE PARA EL VIDEO DE YOUTUBE EMBEDDED */
-.video-container {
+    .video-container {
       position: relative;
       width: 100%;
       max-width: 850px;
       padding-bottom: 56.25%;
       height: 0;
       margin: 30px 0 50px 0;
-      background: transparent; /* <- Cambiamos de #000 a transparent para que no se note */
+      background: #39c6f3; /* Fondo celeste igual al body para fundir cualquier franja despareja */
       border-radius: 4px;
       overflow: hidden;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
@@ -147,6 +147,12 @@
       width: 100%;
       height: 100%;
       border: 0;
+    }
+
+    /* CONTENEDOR PARA LAS PUBLICACIONES DE INSTAGRAM EMBEBIDAS */
+    .instagram-embed-box {
+      margin: 30px 0 50px 0;
+      max-width: 850px;
     }
 
     /* VERSIÓN CELULAR */
@@ -197,18 +203,26 @@
           Conferencias invitadas y registros de referentes externos que visitan el espacio académico.
         </p>
         
-        <!-- CHARLA 1 -->
-        <p><a href="https://www.instagram.com/p/DdFLtxymnZX/?img_index=1" target="_blank">→ Flyer / Publicación en Instagram (Charla 1)</a></p>
+        <!-- CHARLA 1: FLYER DE INSTAGRAM INCRUSTADO (Pegar el código de embed de IG aquí) -->
+        <div class="instagram-embed-box">
+          <!-- Ejemplo de donde va el código de inserción de Instagram: -->
+          <!-- <blockquote class="instagram-media" data-instgrm-permalink="..." ...></blockquote> -->
+          <p style="font-size: 14px; opacity: 0.8; font-style: italic;">[ Aquí se incrustará la publicación visual de Instagram de la Charla 1 ]</p>
+        </div>
         
+        <!-- VIDEO DE YOUTUBE 1 -->
         <div class="video-container">
           <iframe src="https://www.youtube.com/embed/UY6PWVTDns8" title="Charla Teórica - Ficciones Futuras" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
 
-        <!-- CHARLA 2 -->
-        <p style="margin-top: 50px;"><a href="https://www.instagram.com/p/DZD_U3smhQM/?img_index=1" target="_blank">→ Flyer / Publicación en Instagram (Charla 2)</a></p>
+        <!-- CHARLA 2: FLYER DE INSTAGRAM INCRUSTADO (Pegar el código de embed de IG aquí) -->
+        <div class="instagram-embed-box" style="margin-top: 60px;">
+          <!-- <blockquote class="instagram-media" data-instgrm-permalink="..." ...></blockquote> -->
+          <p style="font-size: 14px; opacity: 0.8; font-style: italic;">[ Aquí se incrustará la publicación visual de Instagram de la Charla 2 ]</p>
+        </div>
         
+        <!-- VIDEO DE YOUTUBE 2 -->
         <div class="video-container">
-          <!-- Nota: para embeber correctamente se usa /embed/ en lugar de /watch?v= -->
           <iframe src="https://www.youtube.com/embed/poq0zp0Y2bQ" title="Charla Teórica - Ficciones Futuras" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
 
