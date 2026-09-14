@@ -79,13 +79,12 @@
       top: 0;
       z-index: 10;
       background: #39c6f3;
-      margin-top: -100px;    /* Controla cuánto sube respecto a lo de arriba */
+      margin-top: -100px;
       margin-bottom: 0px;
       width: 100%;
     }
 
     .nav {
-      /* La barra celeste cruza de lado a lado, pero acá controlamos la "caja" interior alineada con el main */
       width: min(1100px, calc(100% - 80px));
       margin: 0 auto;
       padding: 0px 0px; 
@@ -102,19 +101,19 @@
       position: relative; 
     }
 
-    /* IMAGEN PNG DENTRO DEL NAV */
+    /* IMAGEN PNG DENTRO DEL NAV (RESTAURADA A SU POSICIÓN PERFECTA) */
     .nav-brand {
       display: inline-flex;
       align-items: center;
       text-decoration: none;
       position: absolute; 
-      left: -190px; /* <--- Tu posición exacta intacta */
+      left: -190px;
       top: 50%;
-      transform: translateY(-62%); /* <--- Tu alineación exacta intacta */
+      transform: translateY(-62%);
     }
 
     .nav-brand-img {
-      height: 22px; /* <--- Tu tamaño exacto intacto */
+      height: 22px;
       width: auto;
       display: block;
     }
@@ -129,7 +128,7 @@
       margin-right: 0;
     }
 
-    /* NEGRITA Y AMARILLO LIMPIO AL PASAR EL CURSOR (SIN SOMBRA) */
+    /* NEGRITA Y AMARILLO LIMPIO AL PASAR EL CURSOR */
 
     .nav > a:hover,
     .menu-trigger:hover,
@@ -140,7 +139,7 @@
         -0.5px 0 0 currentColor;
     }
 
-    /* MENÚS DESPLEGABLES (DROPDOWN) CON EL MISMO CELESTE DE FONDO */
+    /* MENÚS DESPLEGABLES (DROPDOWN) */
 
     .nav-item {
       position: relative;
@@ -155,7 +154,6 @@
       padding-top: 15px;
       white-space: nowrap;
 
-      /* Mismo celeste del background con una sutil sombra flotante */
       background: #39c6f3; 
       padding: 15px 18px;
       border-radius: 4px;
@@ -179,17 +177,17 @@
       margin-bottom: 0;
     }
 
-    /* --- NUEVO SISTEMA DE 3 CAJAS EDITORIALES PARA EL CONTENIDO --- */
+    /* --- SISTEMA DE 3 CAJAS EDITORIALES CORREGIDO --- */
     
     .content-grid {
       display: grid;
-      /* Columna 1 (Títulos sticky), Columna 2 (Texto principal), Columna 3 (Futuras imágenes) */
-      grid-template-columns: 160px minmax(0, 800px) 140px;
-      gap: 50px;
+      /* Columna 1 (Índice corrido a la izquierda), Columna 2 (Texto principal corrido a la derecha), Columna 3 (Imágenes) */
+      grid-template-columns: 140px minmax(0, 800px) 160px;
+      gap: 30px;
       align-items: start;
     }
 
-    /* Caja 1: Índice lateral con sticky */
+    /* Caja 1: Índice lateral con sticky (alineado hacia afuera a la izquierda) */
     .sidebar-index {
       position: sticky;
       top: 100px;
@@ -197,6 +195,7 @@
       text-transform: uppercase;
       letter-spacing: 0.08em;
       font-weight: bold;
+      transform: translateX(-140px); /* Saca el índice hacia la izquierda respetando la línea del logo */
     }
 
     .sidebar-index a {
@@ -204,6 +203,7 @@
       text-decoration: none;
       display: block;
       margin-bottom: 25px;
+      transition: color 0.3s ease;
     }
 
     .sidebar-index a:hover {
@@ -331,6 +331,7 @@
       }
       .sidebar-index {
         position: static;
+        transform: none;
         margin-bottom: 40px;
       }
     }
@@ -407,7 +408,7 @@
 
   </main>
   
-  <!-- NAVEGACIÓN (STICKY Y A UNA SOLA LÍNEA) - INTACTO -->
+  <!-- NAVEGACIÓN (STICKY Y A UNA SOLA LÍNEA) -->
   <div class="nav-container">
     <nav class="nav">
 
@@ -564,7 +565,7 @@
             Además, deseamos que los estudiantes salgan de la universidad con
             una posición planteada sobre los condicionantes externos a los que
             se van a encontrar, y con los cuales van a tener que enfrentarse,
-            no sólo como profesionales, sino esencialmente como personas.
+            not sólo como profesionales, sino esencialmente como personas.
           </p>
 
           <p>
