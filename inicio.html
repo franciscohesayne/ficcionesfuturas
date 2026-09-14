@@ -79,12 +79,12 @@
       top: 0;
       z-index: 10;
       background: #39c6f3;
-      margin-top:-100px;    /* Controla cuánto sube respecto a lo de arriba */
+      margin-top: -100px;    /* Controla cuánto sube respecto a lo de arriba */
       margin-bottom: 0px;
       width: 100%;
     }
 
-.nav {
+    .nav {
       /* La barra celeste cruza de lado a lado, pero acá controlamos la "caja" interior alineada con el main */
       width: min(1100px, calc(100% - 80px));
       margin: 0 auto;
@@ -108,14 +108,13 @@
       align-items: center;
       text-decoration: none;
       position: absolute; 
-      left: -200px; /* <--- Probá este valor o ajustalo si querés acercarlo o alejarlo del Brief */
+      left: -190px; /* <--- Mueve la imagen hacia la izquierda para separarla de Brief */
       top: 50%;
-      transform: translateY(-58%); /* <--- Sube un poco la imagen verticalmente para centrarla o acomodarla a gusto */
-    }
+      transform: translateY(-62%); /* <--- Sube un poco la imagen verticalmente para alinearla perfecto con el texto */
     }
 
     .nav-brand-img {
-      height: 18px; 
+      height: 22px; /* <--- Tamaño aumentado de la imagen */
       width: auto;
       display: block;
     }
