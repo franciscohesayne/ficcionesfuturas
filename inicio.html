@@ -23,7 +23,7 @@
       margin: 0;
 
       /* Color del fondo */
-      background: linear-gradient(to bottom, #39c6f3 0%, #39c6f3 10%, #000000 100%);
+      background: linear-gradient(to bottom, #39c6f3 0%, #39c6f3 15%, #000000 100%);
       
       /* Color de la letra */
       color: #fff;
@@ -84,35 +84,34 @@
       width: 100%;
     }
 
-    .nav {
-/* Hacemos que el nav ocupe el ancho del contenedor principal (alineado con los textos) */
+.nav {
+      /* La barra celeste cruza de lado a lado, pero acá controlamos la "caja" interior alineada con el main */
       width: min(1100px, calc(100% - 80px));
       margin: 0 auto;
-      padding: 0px 0px; /* Sin padding interno para que el flujo mande perfecto */
+      padding: 0px 0px; 
 
       font-size: 16px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
 
       display: flex;
-      flex-wrap: nowrap; /* Evita que las opciones bajen de renglón */
+      flex-wrap: nowrap;
       justify-content: space-between;
       align-items: center;
       gap: 15px;
-      position: relative; /* <--- Clave para que la imagen se posicione en base a este contenedor */
-    }
+      position: relative; 
     }
 
     /* IMAGEN PNG DENTRO DEL NAV */
-.nav-brand {
+    .nav-brand {
       display: inline-flex;
       align-items: center;
       text-decoration: none;
       position: absolute; 
-      left: -180px; /* Lo ubicamos exactamente a la misma distancia que el logo de arriba para que respete esa línea */
+      left: -140px; /* <--- Probá este valor o ajustalo si querés acercarlo o alejarlo del Brief */
     }
 
-.nav-brand-img {
+    .nav-brand-img {
       height: 16px; 
       width: auto;
       display: block;
