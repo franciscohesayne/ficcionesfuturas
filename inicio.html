@@ -88,7 +88,7 @@
       width: 100%;
       padding: 0px 40px; /* Margen lateral para que respire de los bordes de la pantalla */
 
-      font-size: 18px;
+      font-size: 17px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
 
@@ -97,6 +97,8 @@
       justify-content: space-between;
       align-items: center;
       gap: 15px;
+      position: relative; /* <--- Clave para que la imagen se posicione en base a este contenedor */
+    }
     }
 
     /* IMAGEN PNG DENTRO DEL NAV */
@@ -104,7 +106,7 @@
       display: inline-flex;
       align-items: center;
       text-decoration: none;
-      position: relative;
+      position: absolute; /* <--- Sale del flujo flexbox y deja de empujar a "Brief" */
       left: -20px; /* Compensa el padding del nav para alinear con el margen general */
     }
 
