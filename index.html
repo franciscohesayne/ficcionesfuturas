@@ -55,7 +55,7 @@
       letter-spacing: 0.08em;
       margin-bottom: 25px;
       text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
-margin-left: 10px;
+      margin-left: 10px;
       
       /* Propiedades para la aparición gradual */
       opacity: 0;
@@ -63,7 +63,20 @@ margin-left: 10px;
       transition: opacity 0.8s ease;
     }
 
-    /* Estilo del botón ENTRAR (Inicialmente oculto) */
+    /* Contenedor que agrupa el botón y las flechas para moverlos juntos o controlar su aparición */
+    .enter-container {
+      display: flex;
+      align-items: center;
+      gap: 15px; /* Espacio entre el botón y las flechas */
+      margin-left: 10px;
+
+      /* Propiedades para la aparición gradual */
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.8s ease;
+    }
+
+    /* Estilo del botón ENTRAR */
     .enter-btn {
       color: #fff;
       text-decoration: none;
@@ -74,18 +87,7 @@ margin-left: 10px;
       border: none;
       border-radius: 4px;
       background: rgba(0, 0, 0, 0.08);
-      margin-left: 10px;
-      
-      /* Propiedades para la aparición gradual */
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.8s ease, background 0.3s ease, color 0.3s ease;
-    }
-
-    /* Clase que se activa mediante JavaScript al terminar el video para ambos elementos */
-    .show-elements {
-      opacity: 1 !important;
-      visibility: visible !important;
+      transition: background 0.3s ease, color 0.3s ease;
     }
 
     .enter-btn:hover {
@@ -113,12 +115,20 @@ margin-left: 10px;
       opacity: 1;
       transform: scale(1.15);
     }
+
+    /* Clase que se activa mediante JavaScript al terminar el video */
+    .show-elements {
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
   </style>
 </head>
 <body>
 
-  <!-- VIDEO DE FONDO: Reproduce una única vez los 6 segundos y se detiene -->
-  <video id="introVideo" class="bg-video" autoplay muted playsinline>
+  <!-- VIDEO DE FONDO: 
+       NOTA SOBRE EL SONIDO: Si querés que tenga audio, borrale la palabra 'muted'. 
+       (Ojo: Google Chrome y otros navegadores a veces bloquean el sonido automático si el usuario no hizo clic antes en la página). -->
+  <video id="introVideo" class="bg-video" autoplay playsinline>
     <source src="VIDEO/Video Project12.mp4" type="video/mp4">
     Tu navegador no soporta videos HTML5.
   </video>
@@ -126,19 +136,27 @@ margin-left: 10px;
   <!-- Bloque con desplazamiento vertical y horizontal exacto -->
   <div class="hero-content">
     <div id="welcomeSubtitle" class="welcome-subtitle">FADU · UBA · 2026</div>
-    <a href="inicio.html" id="enterBtn" class="enter-btn">ENTRAR</a>
+    
+    <!-- Contenedor agrupado para el botón y las flechitas -->
+    <div id="enterContainer" class="enter-container">
+      <a href="inicio.html" class="enter-btn">ENTRAR</a>
+      <div class="carousel-arrows">
+        <a href="inicio.html" class="arrow">‹</a>
+        <a href="inicio.html" class="arrow">›</a>
+      </div>
+    </div>
   </div>
 
   <!-- SCRIPT PARA MOSTRAR LOS ELEMENTOS AL FINALIZAR EL VIDEO -->
   <script>
     const video = document.getElementById('introVideo');
     const subtitle = document.getElementById('welcomeSubtitle');
-    const btn = document.getElementById('enterBtn');
+    const container = document.getElementById('enterContainer');
 
-    // Detecta el momento exacto en que termina el video de 6 segundos
+    // Detecta el momento exacto en que termina el video
     video.addEventListener('ended', function() {
       subtitle.classList.add('show-elements');
-      btn.classList.add('show-elements');
+      container.classList.add('show-elements');
     });
   </script>
 
