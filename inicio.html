@@ -101,7 +101,7 @@
       position: relative; 
     }
 
-    /* IMAGEN PNG DENTRO DEL NAV (RESTAURADA A SU POSICIÓN PERFECTA) */
+    /* IMAGEN PNG DENTRO DEL NAV */
     .nav-brand {
       display: inline-flex;
       align-items: center;
@@ -177,25 +177,22 @@
       margin-bottom: 0;
     }
 
-    /* --- SISTEMA DE 3 CAJAS EDITORIALES CORREGIDO --- */
+    /* --- SISTEMA DE 3 CAJAS EDITORIALES ALINEADAS --- */
     
     .content-grid {
       display: grid;
-      /* Columna 1 (Índice corrido a la izquierda), Columna 2 (Texto principal corrido a la derecha), Columna 3 (Imágenes) */
-      grid-template-columns: 140px minmax(0, 800px) 160px;
+      /* Columna 1 (Índice), Columna 2 (Cuerpo de texto perfectamente alineado al borde izquierdo del main), Columna 3 (Imágenes) */
+      grid-template-columns: 180px minmax(0, 1fr) 140px;
       gap: 30px;
       align-items: start;
     }
 
-    /* Caja 1: Índice lateral con sticky (alineado hacia afuera a la izquierda) */
+    /* Caja 1: Índice lateral estático en su propia columna */
     .sidebar-index {
-      position: sticky;
-      top: 100px;
       font-size: 14px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       font-weight: bold;
-      transform: translateX(-140px); /* Saca el índice hacia la izquierda respetando la línea del logo */
     }
 
     .sidebar-index a {
@@ -210,9 +207,11 @@
       color: #ffe00b;
     }
 
-    /* Caja 2: El cuerpo central */
+    /* Caja 2: El cuerpo central alineado milimétricamente al inicio del main */
     .main-text-body {
       grid-column: 2;
+      width: 100%;
+      max-width: 850px;
     }
 
     /* Caja 3: Espacio reservado para futuras imágenes */
@@ -241,6 +240,7 @@
 
     .team {
       margin-top: 150px;
+      max-width: 500px;
     }
 
     .team-title {
@@ -330,8 +330,6 @@
         display: block;
       }
       .sidebar-index {
-        position: static;
-        transform: none;
         margin-bottom: 40px;
       }
     }
@@ -468,7 +466,6 @@
           <a href="#">Montevideo (UY)</a>
           <a href="#">Barolo</a>
           <a href="#">Concursos</a>
-          <a href="#">Jornadas si+</a>
         </div>
       </div>
 
@@ -489,7 +486,7 @@
     <!-- GRILLA DE 3 CAJAS PARA EL CONTENIDO -->
     <div class="content-grid">
 
-      <!-- CAJA 1: Títulos laterales flotantes (Sticky) -->
+      <!-- CAJA 1: Índice lateral estático -->
       <aside class="sidebar-index">
         <a href="#brief">Brief</a>
         <a href="#equipo">Docentes</a>
@@ -497,7 +494,7 @@
         <a href="#contacto">Contacto</a>
       </aside>
 
-      <!-- CAJA 2: Cuerpo central de texto -->
+      <!-- CAJA 2: Cuerpo central de texto (alineado perfectamente con el borde izquierdo) -->
       <div class="main-text-body">
 
         <!-- BRIEF -->
@@ -566,7 +563,7 @@
             Además, deseamos que los estudiantes salgan de la universidad con
             una posición planteada sobre los condicionantes externos a los que
             se van a encontrar, y con los cuales van a tener que enfrentarse,
-            not sólo como profesionales, sino esencialmente como personas.
+            no sólo como profesionales, sino esencialmente como personas.
           </p>
 
           <p>
