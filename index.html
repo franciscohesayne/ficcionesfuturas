@@ -10,7 +10,7 @@
     }
     body {
       margin: 0;
-      /* Fondo celeste base */
+      /* Fondo celeste base por si tarda en cargar */
       background-color: #39c6f3;
       
       min-height: 100vh;
@@ -24,17 +24,44 @@
       align-items: center;
       text-align: center;
       padding: 20px;
+      overflow: hidden; /* Evita barras de desplazamiento innecesarias */
     }
 
-    /* CONTENEDOR DEL VIDEO DE FONDO */
-    .bg-video {
+    /* CONTENEDOR DEL VIDEO DE YOUTUBE DE FONDO */
+    .video-background {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      object-fit: cover;
       z-index: -1;
+      pointer-events: none; /* Evita que interfiera con clics */
+      overflow: hidden;
+    }
+
+    /* Truco CSS para forzar al iframe de YouTube a comportarse como un background-image a pantalla completa */
+    .video-background iframe {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100vw;
+      height: 56.25vw; /* Relación de aspecto 16:9 (100 * 9 / 16) */
+      min-height: 100vh;
+      min-width: 177.77vh; /* Relación de aspecto 16:9 (100 * 16 / 9) */
+      transform: translate(-50%, -50%);
+      border: 0;
+    }
+
+    /* Capa oscura sutil opcional para que resalten las letras blancas de arriba */
+    .video-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.15); /* Podes subirlo o bajarlo a gusto */
+      z-index: -1;
+      pointer-events: none;
     }
 
     /* Contenedor desplazado en vertical y corrido a la derecha */
@@ -46,9 +73,10 @@
       
       margin-top: 0px; 
       margin-left: 0px; 
+      z-index: 2; /* Para asegurar que esté por encima del video */
     }
 
-    /* Subtítulo institucional (Inicialmente oculto hasta que termine el video) */
+    /* Subtítulo institucional (Inicialmente oculto hasta que aparezca) */
     .welcome-subtitle {
       font-size: 15px;
       text-transform: uppercase;
@@ -63,11 +91,11 @@
       transition: opacity 0.8s ease;
     }
 
-    /* Contenedor que agrupa el botón y las flechas para moverlos juntos o controlar su aparición */
+    /* Contenedor que agrupa el botón y las flechas */
     .enter-container {
       display: flex;
       align-items: center;
-      gap: 15px; /* Espacio entre el botón y las flechas */
+      gap: 15px; 
       margin-left: 10px;
 
       /* Propiedades para la aparición gradual */
@@ -86,7 +114,7 @@
       padding: 12px 35px;
       border: none;
       border-radius: 4px;
-      background: rgba(0, 0, 0, 0.08);
+      background: rgba(0, 0, 0, 0.2);
       transition: background 0.3s ease, color 0.3s ease;
     }
 
@@ -95,7 +123,7 @@
       color: #39c6f3;
     }
 
-    /* Estilo de las flechitas estilo Instagram / Carrusel */
+    /* Estilo de las flechitas */
     .carousel-arrows {
       display: flex;
       gap: 8px;
@@ -116,7 +144,7 @@
       transform: scale(1.15);
     }
 
-    /* Clase que se activa mediante JavaScript al terminar el video */
+    /* Clase que se activa mediante JavaScript */
     .show-elements {
       opacity: 1 !important;
       visibility: visible !important;
@@ -125,13 +153,16 @@
 </head>
 <body>
 
-  <!-- VIDEO DE FONDO: 
-       NOTA SOBRE EL SONIDO: Si querés que tenga audio, borrale la palabra 'muted'. 
-       (Ojo: Google Chrome y otros navegadores a veces bloquean el sonido automático si el usuario no hizo clic antes en la página). -->
-  <video id="introVideo" class="bg-video" autoplay playsinline>
-    <source src="VIDEO/Video Project12.mp4" type="video/mp4">
-    Tu navegador no soporta videos HTML5.
-  </video>
+  <!-- YOUTUBE DE FONDO A PANTALLA COMPLETA -->
+  <div class="video-background">
+    <!-- Usamos el ID del enlace que pasaste (QqR1bymFFZs) con parámetros para autoplay, sin controles, bucle y sin sonido (autoplay obligatorio por políticas de navegadores) -->
+    <iframe src="https://www.youtube.com/embed/QqR1bymFFZs?autoplay=1&mute=1&controls=0&loop=1&playlist=QqR1bymFFZs&disablekb=1&modestbranding=1" 
+            title="Ficciones Futuras Intro" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+    </iframe>
+  </div>
+  <div class="video-overlay"></div>
 
   <!-- Bloque con desplazamiento vertical y horizontal exacto -->
   <div class="hero-content">
@@ -147,16 +178,18 @@
     </div>
   </div>
 
-  <!-- SCRIPT PARA MOSTRAR LOS ELEMENTOS AL FINALIZAR EL VIDEO -->
+  <!-- SCRIPT PARA MOSTRAR LOS ELEMENTOS -->
   <script>
-    const video = document.getElementById('introVideo');
     const subtitle = document.getElementById('welcomeSubtitle');
     const container = document.getElementById('enterContainer');
 
-    // Detecta el momento exacto en que termina el video
-    video.addEventListener('ended', function() {
-      subtitle.classList.add('show-elements');
-      container.classList.add('show-elements');
+    // Como ahora es un video de YouTube continuo, hacemos que los elementos 
+    // aparezcan de forma elegante a los 2 segundos de haber cargado la página (o cuando prefieras)
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        subtitle.classList.add('show-elements');
+        container.classList.add('show-elements');
+      }, 2000); // 2000 milisegundos = 2 segundos
     });
   </script>
 
