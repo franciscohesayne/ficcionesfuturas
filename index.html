@@ -1,197 +1,291 @@
 <!DOCTYPE html>
+
 <html lang="es">
+
 <head>
+
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Ficciones Futuras</title>
+
   <style>
+
     * {
+
       box-sizing: border-box;
+
     }
+
     body {
+
       margin: 0;
-      /* Fondo celeste base por si tarda en cargar */
+
+      /* Fondo celeste base */
+
       background-color: #39c6f3;
+
       
+
       min-height: 100vh;
+
       color: #fff;
+
       font-family: Arial, Helvetica, sans-serif;
+
       
+
       /* Centra los elementos globalmente */
+
       display: flex;
+
       flex-direction: column;
+
       justify-content: center;
+
       align-items: center;
+
       text-align: center;
+
       padding: 20px;
-      overflow: hidden; /* Evita barras de desplazamiento innecesarias */
+
     }
 
-    /* CONTENEDOR DEL VIDEO DE YOUTUBE DE FONDO */
-    .video-background {
+
+
+    /* CONTENEDOR DEL VIDEO DE FONDO */
+
+    .bg-video {
+
       position: fixed;
+
       top: 0;
+
       left: 0;
+
       width: 100vw;
+
       height: 100vh;
+
+      object-fit: cover;
+
       z-index: -1;
-      pointer-events: none; /* Evita que interfiera con clics */
-      overflow: hidden;
+
     }
 
-    /* Truco CSS para forzar al iframe de YouTube a comportarse como un background-image a pantalla completa */
-    .video-background iframe {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 100vw;
-      height: 56.25vw; /* Relación de aspecto 16:9 (100 * 9 / 16) */
-      min-height: 100vh;
-      min-width: 177.77vh; /* Relación de aspecto 16:9 (100 * 16 / 9) */
-      transform: translate(-50%, -50%);
-      border: 0;
-    }
 
-    /* Capa oscura sutil opcional para que resalten las letras blancas de arriba */
-    .video-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.15); /* Podes subirlo o bajarlo a gusto */
-      z-index: -1;
-      pointer-events: none;
-    }
 
     /* Contenedor desplazado en vertical y corrido a la derecha */
+
     .hero-content {
+
       display: flex;
+
       flex-direction: column;
+
       align-items: flex-start;
+
       text-align: left;
+
       
+
       margin-top: 0px; 
+
       margin-left: 0px; 
-      z-index: 2; /* Para asegurar que esté por encima del video */
+
     }
 
-    /* Subtítulo institucional (Inicialmente oculto hasta que aparezca) */
+
+
+    /* Subtítulo institucional (Inicialmente oculto hasta que termine el video) */
+
     .welcome-subtitle {
+
       font-size: 15px;
+
       text-transform: uppercase;
+
       letter-spacing: 0.08em;
+
       margin-bottom: 25px;
+
       text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
-      margin-left: 10px;
+
+margin-left: 10px;
+
       
+
       /* Propiedades para la aparición gradual */
+
       opacity: 0;
+
       visibility: hidden;
+
       transition: opacity 0.8s ease;
+
     }
 
-    /* Contenedor que agrupa el botón y las flechas */
-    .enter-container {
-      display: flex;
-      align-items: center;
-      gap: 15px; 
+
+
+    /* Estilo del botón ENTRAR (Inicialmente oculto) */
+
+    .enter-btn {
+
+      color: #fff;
+
+      text-decoration: none;
+
+      font-size: 18px;
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.1em;
+
+      padding: 12px 35px;
+
+      border: none;
+
+      border-radius: 4px;
+
+      background: rgba(0, 0, 0, 0.08);
+
       margin-left: 10px;
 
+      
+
       /* Propiedades para la aparición gradual */
+
       opacity: 0;
+
       visibility: hidden;
-      transition: opacity 0.8s ease;
+
+      transition: opacity 0.8s ease, background 0.3s ease, color 0.3s ease;
+
     }
 
-    /* Estilo del botón ENTRAR */
-    .enter-btn {
-      color: #fff;
-      text-decoration: none;
-      font-size: 18px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      padding: 12px 35px;
-      border: none;
-      border-radius: 4px;
-      background: rgba(0, 0, 0, 0.2);
-      transition: background 0.3s ease, color 0.3s ease;
+
+
+    /* Clase que se activa mediante JavaScript al terminar el video para ambos elementos */
+
+    .show-elements {
+
+      opacity: 1 !important;
+
+      visibility: visible !important;
+
     }
+
+
 
     .enter-btn:hover {
+
       background: #fff;
+
       color: #39c6f3;
+
     }
 
-    /* Estilo de las flechitas */
+
+
+    /* Estilo de las flechitas estilo Instagram / Carrusel */
+
     .carousel-arrows {
+
       display: flex;
+
       gap: 8px;
+
     }
+
     
+
     .arrow {
+
       color: #fff;
+
       font-size: 20px;
+
       font-weight: bold;
+
       text-decoration: none;
+
       opacity: 0.7;
+
       transition: opacity 0.2s ease, transform 0.2s ease;
+
       text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+
     }
+
+
 
     .arrow:hover {
+
       opacity: 1;
+
       transform: scale(1.15);
+
     }
 
-    /* Clase que se activa mediante JavaScript */
-    .show-elements {
-      opacity: 1 !important;
-      visibility: visible !important;
-    }
   </style>
+
 </head>
+
 <body>
 
-  <!-- YOUTUBE DE FONDO A PANTALLA COMPLETA -->
-  <div class="video-background">
-    <!-- Usamos el ID del enlace que pasaste (QqR1bymFFZs) con parámetros para autoplay, sin controles, bucle y sin sonido (autoplay obligatorio por políticas de navegadores) -->
-    <iframe src="https://www.youtube.com/embed/QqR1bymFFZs?autoplay=1&mute=1&controls=0&loop=1&playlist=QqR1bymFFZs&disablekb=1&modestbranding=1" 
-            title="Ficciones Futuras Intro" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-    </iframe>
-  </div>
-  <div class="video-overlay"></div>
+
+
+  <!-- VIDEO DE FONDO: Reproduce una única vez los 6 segundos y se detiene -->
+
+  <video id="introVideo" class="bg-video" autoplay muted playsinline>
+
+    <source src="VIDEO/Video Project12.mp4" type="video/mp4">
+
+    Tu navegador no soporta videos HTML5.
+
+  </video>
+
+
 
   <!-- Bloque con desplazamiento vertical y horizontal exacto -->
+
   <div class="hero-content">
+
     <div id="welcomeSubtitle" class="welcome-subtitle">FADU · UBA · 2026</div>
-    
-    <!-- Contenedor agrupado para el botón y las flechitas -->
-    <div id="enterContainer" class="enter-container">
-      <a href="inicio.html" class="enter-btn">ENTRAR</a>
-      <div class="carousel-arrows">
-        <a href="inicio.html" class="arrow">‹</a>
-        <a href="inicio.html" class="arrow">›</a>
-      </div>
-    </div>
+
+    <a href="inicio.html" id="enterBtn" class="enter-btn">ENTRAR</a>
+
   </div>
 
-  <!-- SCRIPT PARA MOSTRAR LOS ELEMENTOS -->
-  <script>
-    const subtitle = document.getElementById('welcomeSubtitle');
-    const container = document.getElementById('enterContainer');
 
-    // Como ahora es un video de YouTube continuo, hacemos que los elementos 
-    // aparezcan de forma elegante a los 2 segundos de haber cargado la página (o cuando prefieras)
-    window.addEventListener('load', function() {
-      setTimeout(function() {
-        subtitle.classList.add('show-elements');
-        container.classList.add('show-elements');
-      }, 2000); // 2000 milisegundos = 2 segundos
+
+  <!-- SCRIPT PARA MOSTRAR LOS ELEMENTOS AL FINALIZAR EL VIDEO -->
+
+  <script>
+
+    const video = document.getElementById('introVideo');
+
+    const subtitle = document.getElementById('welcomeSubtitle');
+
+    const btn = document.getElementById('enterBtn');
+
+
+
+    // Detecta el momento exacto en que termina el video de 6 segundos
+
+    video.addEventListener('ended', function() {
+
+      subtitle.classList.add('show-elements');
+
+      btn.classList.add('show-elements');
+
     });
+
   </script>
 
+
+
 </body>
+
 </html>
