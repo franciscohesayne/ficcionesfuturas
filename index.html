@@ -94,6 +94,20 @@
       position: fixed;
       top: 49%; /* <--- CAMBIÁ ESTO SI QUERÉS SUBIRLAS O BAJARLAS (ej: 48%, 52%) */
       transform: translateY(-50%);
+
+      /* CAMBIÁ LA ESCALA / TAMAÑO DEL CÍRCULO ACÁ: */
+      width: 65px;  /* Ancho del círculo */
+      height: 65px; /* Alto del círculo (mantenelo igual para que sea perfecto) */
+      border-radius: 50%;
+
+      background: rgba(0, 0, 0, 0.35); /* Fondo negro semi-transparente */
+      border: 1px solid rgba(255, 255, 255, 0.25); /* Borde sutil */
+      
+      /* Centra la flecha adentro del círculo */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
       font-size: clamp(40px, 7vw, 80px); /* <--- TAMAÑO DE LAS FLECHAS */
       font-weight: bold;
       color: #ffe00b;
@@ -108,11 +122,11 @@
     }
 
     .arrow-left {
-      left: 32vw; /* <--- ACÁ LAS MOVÉS DE IZQUIERDA A DERECHA (ej: 4vw, 8vw, o en px: "80px") */
+      left: 31vw; /* <--- ACÁ LAS MOVÉS DE IZQUIERDA A DERECHA (ej: 4vw, 8vw, o en px: "80px") */
     }
 
     .arrow-right {
-      right: 32vw; /* <--- ACÁ LAS MOVÉS DE DERECHA A IZQUIERDA (ej: 4vw, 8vw, o en px: "80px") */
+      right: 31vw; /* <--- ACÁ LAS MOVÉS DE DERECHA A IZQUIERDA (ej: 4vw, 8vw, o en px: "80px") */
     }
 
     .arrow-left:hover, .arrow-right:hover {
