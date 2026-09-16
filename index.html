@@ -15,7 +15,6 @@
       color: #fff;
       font-family: Arial, Helvetica, sans-serif;
       
-      /* Centra los elementos globalmente en el medio de la pantalla */
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -36,11 +35,11 @@
       z-index: -1;
     }
 
-    /* BLOQUE CENTRAL (ENTRAR Y SUBTÍTULO) - PERFECTAMENTE CENTRADO */
+    /* BLOQUE CENTRAL (ENTRAR Y SUBTÍTULO) */
     .hero-content {
       display: flex;
       flex-direction: column;
-      align-items: center; /* Centrado absoluto */
+      align-items: center;
       text-align: center;
       justify-content: center;
       position: relative;
@@ -81,80 +80,87 @@
       color: #39c6f3;
     }
 
-    /* Clase que activa la aparición al terminar el video */
+    /* Clase general que activa la aparición al terminar el video */
     .show-elements {
       opacity: 1 !important;
+      visibility: hidden; /* se sobrescribe con visible abajo */
       visibility: visible !important;
     }
 
-    /* --- FLECHITAS GRANDES FLANQUEANDO LOS LADOS --- */
+    /* ==========================================================
+       FLECHITAS LATERALES (CONTROL MILIMÉTRICO DE POSICIÓN)
+       ========================================================== */
     .arrow-left, .arrow-right {
       position: fixed;
-      top: 50%;
+      top: 50%; /* <--- CAMBIÁ ESTO SI QUERÉS SUBIRLAS O BAJARLAS (ej: 48%, 52%) */
       transform: translateY(-50%);
-      font-size: clamp(40px, 7vw, 80px); /* Grandes y responsivas */
+      font-size: clamp(40px, 7vw, 80px); /* <--- TAMAÑO DE LAS FLECHAS */
       font-weight: bold;
-      color: #ffe00b; /* Color amarillo institucional o blanco según prefieras */
+      color: #ffe00b;
       text-decoration: none;
       text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-      transition: transform 0.2s ease, opacity 0.2s ease;
       z-index: 10;
-      opacity: 0.85;
+
+      /* Inicialmente ocultas hasta que termine el video */
+      opacity: 0;
+      visibility: hidden;
+      transition: transform 0.2s ease, opacity 0.8s ease;
     }
 
     .arrow-left {
-      left: 6vw; /* Posicionadas a los costados, donde marcan tus flechas rojas */
+      left: 50vw; /* <--- ACÁ LAS MOVÉS DE IZQUIERDA A DERECHA (ej: 4vw, 8vw, o en px: "80px") */
     }
 
     .arrow-right {
-      right: 6vw;
+      right: 50vw; /* <--- ACÁ LAS MOVÉS DE DERECHA A IZQUIERDA (ej: 4vw, 8vw, o en px: "80px") */
     }
 
     .arrow-left:hover, .arrow-right:hover {
       transform: translateY(-50%) scale(1.15);
-      opacity: 1;
     }
   </style>
 </head>
 <body>
 
-  <!-- VIDEO DE FONDO: Intentará reproducirse con sonido. 
-       Si el navegador bloquea el audio por seguridad, se destrabará al primer clic del usuario en la pantalla. -->
+  <!-- VIDEO DE FONDO CON SONIDO -->
   <video id="introVideo" class="bg-video" autoplay playsinline>
     <source src="VIDEO/Video Project18.mp4" type="video/mp4">
     Tu navegador no soporta videos HTML5.
   </video>
 
-  <!-- FLECHITA IZQUIERDA (Al lado de FICCIONES) -->
-  <a href="inicio.html" class="arrow-left">‹</a>
+  <!-- FLECHITA IZQUIERDA -->
+  <a href="inicio.html" id="arrowLeft" class="arrow-left">‹</a>
 
-  <!-- BLOQUE CENTRAL (Todo perfectamente centrado) -->
+  <!-- BLOQUE CENTRAL -->
   <div class="hero-content">
     <div id="welcomeSubtitle" class="welcome-subtitle">FADU · UBA · 2026</div>
     <a href="inicio.html" id="enterBtn" class="enter-btn">ENTRAR</a>
   </div>
 
-  <!-- FLECHITA DERECHA (Al lado de FUTURAS) -->
-  <a href="inicio.html" class="arrow-right">›</a>
+  <!-- FLECHITA DERECHA -->
+  <a href="inicio.html" id="arrowRight" class="arrow-right">›</a>
 
-  <!-- SCRIPT PARA EL FIN DEL VIDEO Y AUDIO -->
+  <!-- SCRIPT PARA SINCRONIZAR AUDIO Y APARICIÓN AL FINALIZAR EL VIDEO -->
   <script>
     const video = document.getElementById('introVideo');
     const subtitle = document.getElementById('welcomeSubtitle');
     const btn = document.getElementById('enterBtn');
+    const arrowLeft = document.getElementById('arrowLeft');
+    const arrowRight = document.getElementById('arrowRight');
 
-    // Intentar activar el sonido por si el navegador lo permite de entrada
+    // Intentar reproducir con sonido
     video.muted = false;
     video.play().catch(() => {
-      // Si el navegador bloquea el audio autoplay, lo dejamos en mute hasta el primer clic del usuario
       video.muted = true;
       video.play();
     });
 
-    // Detecta el momento exacto en que termina el video de 13s
+    // Evento al terminar los 13 segundos del video
     video.addEventListener('ended', function() {
       subtitle.classList.add('show-elements');
       btn.classList.add('show-elements');
+      arrowLeft.classList.add('show-elements');
+      arrowRight.classList.add('show-elements');
     });
   </script>
 
