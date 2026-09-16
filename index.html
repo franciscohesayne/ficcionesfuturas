@@ -83,54 +83,54 @@
     /* Clase general que activa la aparición al terminar el video */
     .show-elements {
       opacity: 1 !important;
-      visibility: hidden; /* se sobrescribe con visible abajo */
       visibility: visible !important;
     }
 
     /* ==========================================================
-       FLECHITAS LATERALES (CONTROL MILIMÉTRICO DE POSICIÓN)
+       FLECHITAS LATERALES 
        ========================================================== */
     .arrow-left, .arrow-right {
       position: fixed;
-      top: 49%; /* <--- CAMBIÁ ESTO SI QUERÉS SUBIRLAS O BAJARLAS (ej: 48%, 52%) */
+      top: 49%; 
       transform: translateY(-50%);
 
-      /* CAMBIÁ LA ESCALA / TAMAÑO DEL CÍRCULO ACÁ: */
-      width: 65px;  /* Ancho del círculo */
-      height: 65px; /* Alto del círculo (mantenelo igual para que sea perfecto) */
+      /* Tamaño del círculo */
+      width: 65px;  
+      height: 65px; 
       border-radius: 50%;
 
-      background: rgba(0, 0, 0, 0.35); /* Fondo negro semi-transparente */
-      border: 1px solid rgba(255, 255, 255, 0.25); /* Borde sutil */
+      /* Misma transparencia exacta que el botón ENTRAR (0.15) */
+      background: rgba(0, 0, 0, 0.15); 
+      border: 1px solid rgba(255, 255, 255, 0.2); 
       
-      /* Centra la flecha adentro del círculo */
+      /* Centra perfectamente la flecha adentro del círculo */
       display: flex;
       justify-content: center;
       align-items: center;
       
-      font-size: clamp(40px, 7vw, 80px); /* <--- TAMAÑO DE LAS FLECHAS */
+      font-size: 28px; /* Tamaño proporcional para que quede bien centrada en 65px */
       font-weight: bold;
       color: #ffe00b;
       text-decoration: none;
-      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
       z-index: 10;
 
       /* Inicialmente ocultas hasta que termine el video */
       opacity: 0;
       visibility: hidden;
-      transition: transform 0.2s ease, opacity 0.8s ease;
+      transition: transform 0.2s ease, opacity 0.8s ease, background 0.2s ease;
     }
 
     .arrow-left {
-      left: 31vw; /* <--- ACÁ LAS MOVÉS DE IZQUIERDA A DERECHA (ej: 4vw, 8vw, o en px: "80px") */
+      left: 31vw; 
     }
 
     .arrow-right {
-      right: 31vw; /* <--- ACÁ LAS MOVÉS DE DERECHA A IZQUIERDA (ej: 4vw, 8vw, o en px: "80px") */
+      right: 31vw; 
     }
 
     .arrow-left:hover, .arrow-right:hover {
-      transform: translateY(-50%) scale(1.15);
+      transform: translateY(-50%) scale(1.1);
+      background: rgba(0, 0, 0, 0.3); /* Un toque más opaco al pasar el mouse */
     }
   </style>
 </head>
