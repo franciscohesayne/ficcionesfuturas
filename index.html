@@ -55,8 +55,10 @@
     }
 
     .gallery-img {
-      max-width: 120vw;  /* <--- Imágenes más grandes */
-      max-height: 120vh; /* <--- Imágenes más grandes */
+      /* CAMBIÁ ESTOS VALORES PARA AGRANDAR O AVICHAR LAS FOTOS DEL CARRUSEL */
+      width: 85vw;   /* Ancho relativo a la pantalla */
+      height: auto;  /* Mantiene la proporción original automáticamente */
+      max-height: 85vh;
       object-fit: contain;
     }
 
@@ -81,8 +83,10 @@
     }
 
     .crystal-img {
-      max-width: 85vw;
-      max-height: 85vh;
+      /* CAMBIÁ ESTOS VALORES PARA AGRANDAR O ACHICAR LA BOLA DE CRISTAL */
+      width: 65vw;   /* Ancho de la capa superior */
+      height: auto;  /* Mantiene la proporción original */
+      max-height: 80vh;
       object-fit: contain;
     }
 
@@ -262,7 +266,7 @@
       arrowLeft.classList.add('show-elements');
       arrowRight.classList.add('show-elements');
       imageViewer.classList.add('show-elements');
-      crystalOverlay.classList.add('show-elements'); // Aparece la bola de cristal junto con todo
+      crystalOverlay.classList.add('show-elements');
       
       updateImage(); 
     });
