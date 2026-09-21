@@ -36,7 +36,7 @@
     }
 
     /* ==========================================================
-       CONTENEDOR DE LAS IMÁGENES PNG (Por delante del video)
+       CONTENEDOR DE LAS IMÁGENES PNG (Carrusel de fondo)
        ========================================================== */
     .image-viewer {
       position: fixed;
@@ -47,7 +47,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      pointer-events: none; /* Para que no bloquee clics por detrás si hiciera falta */
       z-index: 5;
 
       opacity: 0;
@@ -56,11 +55,35 @@
     }
 
     .gallery-img {
-      max-width: 65vw;
-      max-height: 65vh;
+      max-width: 85vw;  /* <--- Imágenes más grandes */
+      max-height: 85vh; /* <--- Imágenes más grandes */
       object-fit: contain;
-      /* Opcional: un toque de sombra para que resalten sobre el video */
-      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+    }
+
+    /* ==========================================================
+       CAPA SUPERIOR: BOLA DE CRISTAL (Fija arriba de todo)
+       ========================================================== */
+    .crystal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      pointer-events: none; /* Vital para que no bloquee los clics en las flechas */
+      z-index: 15; /* Por encima de las imágenes (5) pero debajo de las flechas (30) */
+
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.8s ease;
+    }
+
+    .crystal-img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
     }
 
     /* BLOQUE CENTRAL (ENTRAR Y SUBTÍTULO) */
@@ -71,7 +94,7 @@
       text-align: center;
       justify-content: center;
       position: relative;
-      z-index: 20;
+      z-index: 25;
     }
 
     /* Subtítulo institucional (Oculto hasta terminar el video) */
@@ -123,16 +146,13 @@
       top: 49%; 
       transform: translateY(-50%);
 
-      /* Tamaño del círculo */
       width: 65px;  
       height: 65px; 
       border-radius: 50%;
 
-      /* Misma transparencia exacta que el botón ENTRAR (0.15) */
       background: rgba(0, 0, 0, 0.15); 
       border: 1px solid rgba(255, 255, 255, 0.2); 
       
-      /* Centra perfectamente la flecha adentro del círculo */
       display: flex;
       justify-content: center;
       align-items: center;
@@ -142,9 +162,8 @@
       color: #ffe00b;
       text-decoration: none;
       cursor: pointer;
-      z-index: 30;
+      z-index: 30; /* Arriba de todo para poder hacerles clic */
 
-      /* Inicialmente ocultas hasta que termine el video */
       opacity: 0;
       visibility: hidden;
       transition: transform 0.2s ease, opacity 0.8s ease, background 0.2s ease;
@@ -172,9 +191,14 @@
     Tu navegador no soporta videos HTML5.
   </video>
 
-  <!-- CONTENEDOR DE LA IMAGEN PNG ACTUAL -->
+  <!-- CONTENEDOR DE LA IMAGEN PNG ACTUAL (Capa de abajo del carrusel) -->
   <div id="imageViewer" class="image-viewer">
     <img id="currentImage" class="gallery-img" src="" alt="Ficciones Futuras">
+  </div>
+
+  <!-- CAPA SUPERIOR: BOLA DE CRISTAL (Fija superpuesta) -->
+  <div id="crystalOverlay" class="crystal-overlay">
+    <img class="crystal-img" src="IMAGENES/BOLA de crist.png" alt="Bola de cristal">
   </div>
 
   <!-- FLECHITA IZQUIERDA (BOTÓN) -->
@@ -189,7 +213,7 @@
   <!-- FLECHITA DERECHA (BOTÓN) -->
   <button id="arrowRight" class="arrow-right">›</button>
 
-  <!-- SCRIPT PARA AUDIO, FIN DEL VIDEO Y CAMBIO DE IMÁGENES -->
+  <!-- SCRIPT -->
   <script>
     const video = document.getElementById('introVideo');
     const subtitle = document.getElementById('welcomeSubtitle');
@@ -197,9 +221,9 @@
     const arrowLeft = document.getElementById('arrowLeft');
     const arrowRight = document.getElementById('arrowRight');
     const imageViewer = document.getElementById('imageViewer');
+    const crystalOverlay = document.getElementById('crystalOverlay');
     const currentImage = document.getElementById('currentImage');
 
-    // Lista con tus dos imágenes PNG especificadas
     const images = [
       "IMAGENES/FICCIONES/FF01-1.png",
       "IMAGENES/FICCIONES/FF02-1.png"
@@ -238,17 +262,17 @@
       arrowLeft.classList.add('show-elements');
       arrowRight.classList.add('show-elements');
       imageViewer.classList.add('show-elements');
+      crystalOverlay.classList.add('show-elements'); // Aparece la bola de cristal junto con todo
       
-      updateImage(); // Carga la primera imagen (FF01-1.png) al finalizar el video
+      updateImage(); 
     });
 
-    // Lógica para cambiar de imagen con la flecha derecha
+    // Controles de flechas
     arrowRight.addEventListener('click', function() {
       currentIndex = (currentIndex + 1) % images.length;
       updateImage();
     });
 
-    // Lógica para cambiar de imagen con la flecha izquierda
     arrowLeft.addEventListener('click', function() {
       currentIndex = (currentIndex - 1 + images.length) % images.length;
       updateImage();
