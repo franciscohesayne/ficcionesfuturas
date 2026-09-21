@@ -35,6 +35,34 @@
       z-index: -1;
     }
 
+    /* ==========================================================
+       CONTENEDOR DE LAS IMÁGENES PNG (Por delante del video)
+       ========================================================== */
+    .image-viewer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      pointer-events: none; /* Para que no bloquee clics por detrás si hiciera falta */
+      z-index: 5;
+
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.8s ease;
+    }
+
+    .gallery-img {
+      max-width: 65vw;
+      max-height: 65vh;
+      object-fit: contain;
+      /* Opcional: un toque de sombra para que resalten sobre el video */
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+    }
+
     /* BLOQUE CENTRAL (ENTRAR Y SUBTÍTULO) */
     .hero-content {
       display: flex;
@@ -43,6 +71,7 @@
       text-align: center;
       justify-content: center;
       position: relative;
+      z-index: 20;
     }
 
     /* Subtítulo institucional (Oculto hasta terminar el video) */
@@ -87,11 +116,11 @@
     }
 
     /* ==========================================================
-       FLECHITAS LATERALES 
+       FLECHITAS LATERALES (BOTONES DEL CARRUSEL)
        ========================================================== */
     .arrow-left, .arrow-right {
       position: fixed;
-      top: 50%; 
+      top: 49%; 
       transform: translateY(-50%);
 
       /* Tamaño del círculo */
@@ -108,11 +137,12 @@
       justify-content: center;
       align-items: center;
       
-      font-size: 28px; /* Tamaño proporcional para que quede bien centrada en 65px */
+      font-size: 28px; 
       font-weight: bold;
       color: #ffe00b;
       text-decoration: none;
-      z-index: 10;
+      cursor: pointer;
+      z-index: 30;
 
       /* Inicialmente ocultas hasta que termine el video */
       opacity: 0;
@@ -130,7 +160,7 @@
 
     .arrow-left:hover, .arrow-right:hover {
       transform: translateY(-50%) scale(1.1);
-      background: rgba(0, 0, 0, 0.3); /* Un toque más opaco al pasar el mouse */
+      background: rgba(0, 0, 0, 0.3);
     }
   </style>
 </head>
@@ -142,8 +172,13 @@
     Tu navegador no soporta videos HTML5.
   </video>
 
-  <!-- FLECHITA IZQUIERDA -->
-  <a href="inicio.html" id="arrowLeft" class="arrow-left">‹</a>
+  <!-- CONTENEDOR DE LA IMAGEN PNG ACTUAL -->
+  <div id="imageViewer" class="image-viewer">
+    <img id="currentImage" class="gallery-img" src="" alt="Ficciones Futuras">
+  </div>
+
+  <!-- FLECHITA IZQUIERDA (BOTÓN) -->
+  <button id="arrowLeft" class="arrow-left">‹</button>
 
   <!-- BLOQUE CENTRAL -->
   <div class="hero-content">
@@ -151,23 +186,50 @@
     <a href="inicio.html" id="enterBtn" class="enter-btn">ENTRAR</a>
   </div>
 
-  <!-- FLECHITA DERECHA -->
-  <a href="inicio.html" id="arrowRight" class="arrow-right">›</a>
+  <!-- FLECHITA DERECHA (BOTÓN) -->
+  <button id="arrowRight" class="arrow-right">›</button>
 
-  <!-- SCRIPT PARA SINCRONIZAR AUDIO Y APARICIÓN AL FINALIZAR EL VIDEO -->
+  <!-- SCRIPT PARA AUDIO, FIN DEL VIDEO Y CAMBIO DE IMÁGENES -->
   <script>
     const video = document.getElementById('introVideo');
     const subtitle = document.getElementById('welcomeSubtitle');
     const btn = document.getElementById('enterBtn');
     const arrowLeft = document.getElementById('arrowLeft');
     const arrowRight = document.getElementById('arrowRight');
+    const imageViewer = document.getElementById('imageViewer');
+    const currentImage = document.getElementById('currentImage');
+
+    // Lista con tus dos imágenes PNG especificadas
+    const images = [
+      "IMAGENES/FICCIONES/FF01-1.png",
+      "IMAGENES/FICCIONES/FF02-1.png"
+    ];
+
+    let currentIndex = 0;
+
+    function updateImage() {
+      currentImage.src = images[currentIndex];
+    }
 
     // Intentar reproducir con sonido
     video.muted = false;
-    video.play().catch(() => {
-      video.muted = true;
-      video.play();
-    });
+    let playPromise = video.play();
+
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        video.muted = true;
+        video.play();
+        
+        const enableAudioOnInteraction = function() {
+          video.muted = false;
+          window.removeEventListener('click', enableAudioOnInteraction);
+          window.removeEventListener('touchstart', enableAudioOnInteraction);
+        };
+        
+        window.addEventListener('click', enableAudioOnInteraction);
+        window.addEventListener('touchstart', enableAudioOnInteraction);
+      });
+    }
 
     // Evento al terminar los 13 segundos del video
     video.addEventListener('ended', function() {
@@ -175,6 +237,21 @@
       btn.classList.add('show-elements');
       arrowLeft.classList.add('show-elements');
       arrowRight.classList.add('show-elements');
+      imageViewer.classList.add('show-elements');
+      
+      updateImage(); // Carga la primera imagen (FF01-1.png) al finalizar el video
+    });
+
+    // Lógica para cambiar de imagen con la flecha derecha
+    arrowRight.addEventListener('click', function() {
+      currentIndex = (currentIndex + 1) % images.length;
+      updateImage();
+    });
+
+    // Lógica para cambiar de imagen con la flecha izquierda
+    arrowLeft.addEventListener('click', function() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      updateImage();
     });
   </script>
 
