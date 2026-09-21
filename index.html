@@ -81,13 +81,26 @@
       visibility: hidden;
       transition: opacity 0.8s ease;
     }
-
+/* ==========================================================
+       ANIMACIÓN DE ROTACIÓN EN LOOP (360 GRADOS)
+       ========================================================== */
+    @keyframes rotarAnimacion {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg); /* Rota una vuelta completa de forma constante */
+      }
+    }
+    
     .crystal-img {
       /* CAMBIÁ ESTOS VALORES PARA AGRANDAR O ACHICAR LA BOLA DE CRISTAL */
       width: 60vw;   /* Ancho de la capa superior */
       height: auto;  /* Mantiene la proporción original */
       max-height: 70vh;
       object-fit: contain;
+      /* Gira de forma continua. Cambiá '10s' para que vaya más rápido (ej: 5s) o más lento (ej: 20s) */
+      animation: rotarAnimacion 10s linear infinite;
     }
 
     /* BLOQUE CENTRAL (ENTRAR Y SUBTÍTULO) */
