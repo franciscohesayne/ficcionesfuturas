@@ -55,9 +55,8 @@
     }
 
     .gallery-img {
-      /* CAMBIÁ ESTOS VALORES PARA AGRANDAR O AVICHAR LAS FOTOS DEL CARRUSEL */
-      width: 70vw;   /* Ancho relativo a la pantalla */
-      height: auto;  /* Mantiene la proporción original automáticamente */
+      width: 70vw;   
+      height: auto;  
       max-height: 70vh;
       object-fit: contain;
     }
@@ -74,14 +73,15 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      pointer-events: none; /* Vital para que no bloquee los clics en las flechas */
-      z-index: 15; /* Por encima de las imágenes (5) pero debajo de las flechas (30) */
+      pointer-events: none; 
+      z-index: 15; 
 
       opacity: 0;
       visibility: hidden;
       transition: opacity 0.8s ease;
     }
-/* ==========================================================
+
+    /* ==========================================================
        ANIMACIÓN DE ROTACIÓN EN LOOP (360 GRADOS)
        ========================================================== */
     @keyframes rotarAnimacion {
@@ -89,17 +89,15 @@
         transform: rotate(0deg);
       }
       to {
-        transform: rotate(360deg); /* Rota una vuelta completa de forma constante */
+        transform: rotate(360deg); 
       }
     }
     
     .crystal-img {
-      /* CAMBIÁ ESTOS VALORES PARA AGRANDAR O ACHICAR LA BOLA DE CRISTAL */
-      width: 60vw;   /* Ancho de la capa superior */
-      height: auto;  /* Mantiene la proporción original */
+      width: 60vw;   
+      height: auto;  
       max-height: 70vh;
       object-fit: contain;
-      /* Gira de forma continua. Cambiá '10s' para que vaya más rápido (ej: 5s) o más lento (ej: 20s) */
       animation: rotarAnimacion 10s linear infinite;
     }
 
@@ -156,7 +154,7 @@
     }
 
     /* ==========================================================
-       FLECHITAS LATERALES (BOTONES DEL CARRUSEL)
+       FLECHITAS LATERALES CON « »
        ========================================================== */
     .arrow-left, .arrow-right {
       position: fixed;
@@ -174,12 +172,12 @@
       justify-content: center;
       align-items: center;
       
-      font-size: 28px; 
+      font-size: 24px; 
       font-weight: bold;
       color: #ffe00b;
       text-decoration: none;
       cursor: pointer;
-      z-index: 30; /* Arriba de todo para poder hacerles clic */
+      z-index: 30; 
 
       opacity: 0;
       visibility: hidden;
@@ -218,8 +216,8 @@
     <img class="crystal-img" src="IMAGENES/BOLA de crist.png" alt="Bola de cristal">
   </div>
 
-  <!-- FLECHITA IZQUIERDA (BOTÓN) -->
-  <button id="arrowLeft" class="arrow-left">‹</button>
+  <!-- FLECHITA IZQUIERDA « -->
+  <button id="arrowLeft" class="arrow-left">«</button>
 
   <!-- BLOQUE CENTRAL -->
   <div class="hero-content">
@@ -227,8 +225,8 @@
     <a href="inicio.html" id="enterBtn" class="enter-btn">ENTRAR</a>
   </div>
 
-  <!-- FLECHITA DERECHA (BOTÓN) -->
-  <button id="arrowRight" class="arrow-right">›</button>
+  <!-- FLECHITA DERECHA » -->
+  <button id="arrowRight" class="arrow-right">»</button>
 
   <!-- SCRIPT -->
   <script>
@@ -241,7 +239,7 @@
     const crystalOverlay = document.getElementById('crystalOverlay');
     const currentImage = document.getElementById('currentImage');
 
-    const images = [
+    let images = [
       "IMAGENES/FICCIONES/FF01-2.png",
       "IMAGENES/FICCIONES/FF02-1.png",
       "IMAGENES/FICCIONES/FF03-1.png",
@@ -249,6 +247,17 @@
       "IMAGENES/FICCIONES/FF05-1.png",
       "IMAGENES/FICCIONES/FF06-1.png"
     ];
+
+    // Función para mezclar las imágenes aleatoriamente (Algoritmo Fisher-Yates)
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    // Mezclamos el array al iniciar la página
+    shuffleArray(images);
 
     let currentIndex = 0;
 
